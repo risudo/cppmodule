@@ -1,6 +1,6 @@
 NAME = phonebook
 
-SRCS = main.cpp Contact.cpp search.cpp
+SRCS = main.cpp Contact.cpp PhoneBook.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CXX = clang++ -std=gnu++98

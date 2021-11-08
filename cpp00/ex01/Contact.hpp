@@ -8,11 +8,13 @@ class Contact
 {
 public:
 	Contact();
-	Contact(std::string *line);
 	void	set_data(std::string *line, int index);
 	int		get_index() const;
-	void	put_data() const;
-	void	put_short_data() const;
+	std::string get_first_name() const;
+	std::string get_last_name() const;
+	std::string get_nickname() const;
+	std::string get_phone_number() const;
+	std::string get_darkest_secret() const;
 
 private:
 	int			index;
