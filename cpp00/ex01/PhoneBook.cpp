@@ -9,9 +9,24 @@ PhoneBook::~PhoneBook()
 {
 }
 
-void	PhoneBook::print_all_contact(int idx)
+void	PhoneBook::print_space(unsigned long n)
 {
-	std::cout << "print_all_contact" << std::endl;
+	for (unsigned long i = 0; i < n; i++)
+	{
+		std::cout << " ";
+	}
+}
+
+void	PhoneBook::print_bar(unsigned long len)
+{
+	for (unsigned long i = 0; i < len; i++)
+	{
+		std::cout << "─";
+	}
+}
+
+void	PhoneBook::print_all_field(int idx)
+{
 	std::string first_name = contact[idx].get_first_name();
 	std::string last_name = contact[idx].get_last_name();
 	std::string nickname = contact[idx].get_nickname();
@@ -31,40 +46,19 @@ void	PhoneBook::print_all_contact(int idx)
 		len = darkest_secret.length();
 	
 	std::cout << "╭";
-	for (unsigned long i = 0; i < len + 18; i++)
-	{
-		std::cout << "─";
-	}
+	print_bar(len + 18);
 	std::cout << "╮\n" << "│ first name     : " << first_name;
-	for (unsigned long i = 0; i < len - first_name.length(); i++)
-	{
-		std::cout << " ";
-	}
+	print_space(len - first_name.length());
 	std::cout << "│\n" << "│ last name      : " << last_name;
-	for (unsigned long i = 0; i < len - last_name.length(); i++)
-	{
-		std::cout << " ";
-	}
+	print_space(len - last_name.length());
 	std::cout << "│\n" <<  "│ nick name      : " << nickname;
-	for (unsigned long i = 0; i < len - nickname.length(); i++)
-	{
-		std::cout << " ";
-	}
+	print_space(len - nickname.length());
 	std::cout << "│\n" << "│ phone number   : " << phone_number;
-	for (unsigned long i = 0; i < len - phone_number.length(); i++)
-	{
-		std::cout << " ";
-	}
+	print_space(len - phone_number.length());
 	std::cout << "│\n" << "│ darkest secret : " << darkest_secret;
-	for (unsigned long i = 0; i < len - darkest_secret.length(); i++)
-	{
-		std::cout << " ";
-	}
+	print_space(len - darkest_secret.length());
 	std::cout << "│\n" << "╰";
-	for (unsigned long i = 0; i < len + 18; i++)
-	{
-		std::cout << "─";
-	}
+	print_bar(len + 18);
 	std::cout << "╯" << std::endl;
 }
 
@@ -83,7 +77,7 @@ void	PhoneBook::ask_index()
 		int	idx = std::stoi(index);
 		if (idx != 0 && contact[idx - 1].get_index() != -1)
 		{
-			print_all_contact(idx - 1);
+			print_all_field(idx - 1);
 			return ;
 		}
 	}
@@ -113,24 +107,17 @@ void	PhoneBook::print_short_format(int idx)
 		<< "│" << std::endl;
 }
 
-void	PhoneBook::print_short_contact()
+void	PhoneBook::print_simple_contact()
 {
 	std::cout << " ";
-	for (int i = 0; i < 10 * 4 + 3; i++)
-	{
-		std::cout << "-";
-	}
+	print_bar(10 * 4 + 3);
 	std::cout << "\n│" << std::setw(10) << "index   "
 	<< "|" << std::setw(10) << "first name"
 	<< "|" << std::setw(10) << "last name"
 	<< "|" << std::setw(10) << "nickname "
 	<< "│" << std::endl;
 	std::cout << " ";
-
-	for (int i = 0; i < 10 * 4 + 3; i++)
-	{
-		std::cout << "-";
-	}
+	print_bar(10 * 4 + 3);
 	std::cout << std::endl;
 	for (int i = 0; i < 8; i++)
 	{
@@ -138,10 +125,7 @@ void	PhoneBook::print_short_contact()
 		{
 			print_short_format(contact[i].get_index() - 1);
 			std::cout << " ";
-			for (int i = 0; i < 10 * 4 + 3; i++)
-			{
-				std::cout << "-";
-			}
+			print_bar(10 * 4 + 3);
 			std::cout << std::endl;
 		}
 	}
@@ -179,8 +163,7 @@ void	PhoneBook::run()
 	idx = 1;
 	while (1)
 	{
-		std::cout << "Please type command (ADD, SEARCH or EXIT)" << std::endl
-		<< "> " << std::flush;
+		std::cout << "Please type command (ADD, SEARCH or EXIT)\n> " << std::flush;
 
 		getline(std::cin, cmd);
 
@@ -190,8 +173,9 @@ void	PhoneBook::run()
 			add_contact(idx);
 			idx++;
 		} else if (cmd == "SEARCH") {
-			print_short_contact();
-			ask_index();
+			print_simple_contact();
+			if (idx != 1)
+				ask_index();
 		} else if (cmd != "") {
 			std::cout << "command not found" << std::endl;
 		}
