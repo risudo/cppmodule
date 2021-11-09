@@ -75,7 +75,7 @@ void	PhoneBook::ask_index()
 	if (index.length() == 1 && std::isdigit(index[0]))
 	{
 		int	idx = std::stoi(index);
-		if (idx != 0 && contact[idx - 1].get_index() != -1)
+		if (idx > 0 && contact[idx - 1].get_index() != -1)
 		{
 			print_all_field(idx - 1);
 			return ;
