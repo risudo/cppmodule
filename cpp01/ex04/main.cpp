@@ -41,7 +41,7 @@ void	stream_to_outfile(std::string &str, std::string infilename)
 
 	ofname += ".replace";
 	std::ofstream ofs(ofname);
-	if (!ofs)
+	if (ofs.fail())
 	{
 		std::cout << "error" << std::endl;
 		return ;

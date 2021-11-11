@@ -18,5 +18,8 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
+test: $(NAME)
+	./replace test "a" "b"
+
 re: fclean all
 

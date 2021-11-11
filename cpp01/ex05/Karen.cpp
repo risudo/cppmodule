@@ -3,10 +3,11 @@
 
 Karen::Karen()
 {
-	f[0] = &Karen::debug;
-	f[1] = &Karen::info;
-	f[2] = &Karen::warning;
-	f[3] = &Karen::error;
+	f[0] = &Karen::do_nothing;
+	f[1] = &Karen::debug;
+	f[2] = &Karen::info;
+	f[3] = &Karen::warning;
+	f[4] = &Karen::error;
 }
 
 void Karen::debug(void)
@@ -40,6 +41,11 @@ void Karen::error(void)
 	<< std::endl;
 }
 
+void	Karen::do_nothing(void)
+{
+	;
+}
+
 void Karen::complain(std::string level)
 {
 	int idx = 0;
@@ -48,6 +54,5 @@ void Karen::complain(std::string level)
 	idx += (level == "INFO") * 2;
 	idx += (level == "WARNING") * 3;
 	idx += (level == "ERROR") * 4;
-	if (idx >= 1)
-		(this->*f[idx - 1])();
+	(this->*f[idx])();
 }
