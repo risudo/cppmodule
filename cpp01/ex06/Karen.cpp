@@ -3,17 +3,17 @@
 
 Karen::Karen()
 {
-	f[0] = &Karen::debug;
-	f[1] = &Karen::info;
-	f[2] = &Karen::warning;
-	f[3] = &Karen::error;
+	f[0] = &Karen::do_nothing;
+	f[1] = &Karen::debug;
+	f[2] = &Karen::info;
+	f[3] = &Karen::warning;
+	f[4] = &Karen::error;
 }
 
 void Karen::debug(void)
 {
 	std::cout << \
-	"[ DEBUG ]\n\
-I love to get extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. \
+	"I love to get extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. \
 I just love it!" \
 	<< std::endl;
 }
@@ -21,8 +21,7 @@ I just love it!" \
 void Karen::info(void)
 {
 	std::cout << \
-	"[ INFO ] \n\
-I cannot believe adding extra bacon cost more money. You don’t put enough! \
+	"I cannot believe adding extra bacon cost more money. You don’t put enough! \
 If you did I would not have to ask for it!" \
 	<< std::endl;
 }
@@ -30,8 +29,7 @@ If you did I would not have to ask for it!" \
 void Karen::warning(void)
 {
 	std::cout << \
-	"[ WARNING ] \n\
-I think I deserve to have some extra bacon for free. \
+	"I think I deserve to have some extra bacon for free. \
 I’ve been coming here for years and you just started working here last month." \
 	<< std::endl;
 }
@@ -39,9 +37,13 @@ I’ve been coming here for years and you just started working here last month."
 void Karen::error(void)
 {
 	std::cout << \
-	"[ ERROR ]\n\
-This is unacceptable, I want to speak to the manager now." \
+"This is unacceptable, I want to speak to the manager now." \
 	<< std::endl;
+}
+
+void	Karen::do_nothing(void)
+{
+	;
 }
 
 void Karen::complain(std::string level)
@@ -52,12 +54,5 @@ void Karen::complain(std::string level)
 	idx += (level == "INFO") * 2;
 	idx += (level == "WARNING") * 3;
 	idx += (level == "ERROR") * 4;
-	if (idx >= 1)
-	{
-		(this->*f[idx - 1])();
-	}
-	else if (level.length() > 0)
-	{
-		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-	}
+	(this->*f[idx])();
 }
