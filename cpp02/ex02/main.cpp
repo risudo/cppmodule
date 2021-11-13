@@ -23,6 +23,7 @@ int	main(void)
 	std::cout << "a is     " << a << std::endl;
 	std::cout << "c - a is " << c - a << std::endl;
 	std::cout << "a * c is " << a * c << std::endl;
+	std::cout << "a * -2 is " << a * Fixed(-2) << std::endl;
 	std::cout << "c / a is " << c / a << std::endl;
 	return 0;
 }

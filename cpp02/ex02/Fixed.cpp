@@ -112,6 +112,11 @@ Fixed	Fixed::operator/(Fixed const &fixed)
 {
 	Fixed	ret;
 
+	if (fixed.getRawBits() == 0)
+	{
+		std::cout << "division by 0" << std::endl;
+		exit(1);
+	}
 	ret.setRawBits(_value / fixed.getRawBits() * (1 << _offset));
 	return (ret);
 }
