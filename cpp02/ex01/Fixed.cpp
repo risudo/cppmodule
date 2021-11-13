@@ -17,26 +17,13 @@ Fixed::Fixed(const Fixed &fixed)
 Fixed::Fixed(const int value)
 {
 	std::cout << "Int constructor called" << std::endl;
-	_value = value * (1 << bits);
+	_value = value * (1 << _offset);
 }
 
 Fixed::Fixed(const float value)
 {
 	std::cout << "Float constructor called" << std::endl;
-	
-	union {float f; int i; } a;
-	a.f = value;
-	/* std::cout << "1 << 8      : " << std::bitset<32>(1 << bits) << std::endl; */
-	/* std::cout << "value       : "; */
-	/* for (int i = 31; i >= 0; i--) */
-	/* { */
-	/* 	std::cout << ((a.i >> i) & 1); */
-	/* } */
-	/* std::cout << std::endl; */
-	/* std::cout << "value*(1<<8): " << std::bitset<32>(value * (1 << bits)) << std::endl; */
-
-	_value = roundf(value * (1 << bits));
-
+	_value = roundf(value * (1 << _offset));
 }
 
 Fixed::~Fixed()
@@ -66,12 +53,12 @@ int	Fixed::getRawBits(void) const
 
 float	Fixed::toFloat(void) const
 {
-	return ((float)_value / (1 << bits));
+	return (static_cast<float>(_value) / (1 << _offset));
 }
 
 int	Fixed::toInt(void) const
 {
-	return ((int)_value / (1 << bits));
+	return (static_cast<int>(_value) / (1 << _offset));
 }
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed)
@@ -79,4 +66,3 @@ std::ostream &operator<<(std::ostream &os, const Fixed &fixed)
 	os << fixed.toFloat();
 	return (os);
 }
-

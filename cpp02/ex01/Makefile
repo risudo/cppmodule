@@ -5,7 +5,7 @@ SRCS =	main.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
-CXX = clang++ -std=gnu++98
+CXX = clang++ -std=gnu++98 -pedantic
 CXXFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
@@ -18,3 +18,5 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+
+re: fclean all
