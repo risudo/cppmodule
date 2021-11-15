@@ -3,6 +3,7 @@
 class ClapTrap
 {
 public:
+	ClapTrap();
 	ClapTrap(std::string name);
 	ClapTrap(const ClapTrap &claptrap);
 	~ClapTrap();
@@ -14,8 +15,8 @@ public:
 	ClapTrap	&operator=(const ClapTrap &r);
 
 private:
-	std::string	Name;
-	int			Hitpoints;
-	int			Energy_points;
-	int			Attack_damage;
+	std::string		Name;
+	unsigned int	Hitpoints;
+	unsigned int	Energy_points;
+	unsigned int	Attack_damage;
 };

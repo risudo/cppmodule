@@ -1,6 +1,11 @@
 #include "ClapTrap.hpp"
 #include "iostream"
 
+ClapTrap::ClapTrap():
+	Name(""), Hitpoints(10), Energy_points(10), Attack_damage(0)
+{
+}
+
 ClapTrap::ClapTrap(std::string name):
 	Name(name), Hitpoints(10), Energy_points(10), Attack_damage(0)
 {
@@ -29,11 +34,20 @@ void	ClapTrap::attack(std::string const &target)
 
 void	ClapTrap::takeDamege(unsigned int amount)
 {
-	std::cout << "ClapTrap " << Name << " takes " << amount << " damage!" << std::endl;
-	Hitpoints -= amount;
+	std::cout << "ClapTrap " << Name << " takes ";
+
+	if (Hitpoints < amount)
+	{
+		std::cout << Hitpoints << " damage!" << std::endl;
+		Hitpoints = 0;
+	} else {
+		std::cout << amount << " damage!" << std::endl;
+		Hitpoints -= amount;
+	}
 }
 
-void	beRepaired(unsigned int amount)
+void	ClapTrap::beRepaired(unsigned int amount)
 {
-	std::cout << "" << std::endl;
+	std::cout << "ClapTrap " << Name << " is repaired " << amount << " points"<< std::endl;
+	Hitpoints += amount;
 }
