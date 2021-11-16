@@ -12,7 +12,6 @@ public:
 	Cat &operator=(Cat const &other);
 	std::string	getType() const;
 	void	makeSound() const;
-	void	printBrainPtr() const;
 
 private:
 	Brain	*brain;

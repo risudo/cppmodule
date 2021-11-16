@@ -26,6 +26,5 @@ int	main()
 	{
 		delete a[i];
 	}
-
-	system("leaks a.out");
+	/* system("leaks a.out"); */
 }

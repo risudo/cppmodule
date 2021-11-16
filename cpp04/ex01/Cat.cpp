@@ -16,6 +16,7 @@ Cat::~Cat()
 
 Cat::Cat(Cat const &other)
 {
+	brain = new Brain();
 	*this = other;
 }
 
@@ -23,11 +24,8 @@ Cat &Cat::operator=(Cat const &other)
 {
 	if (this != &other)
 	{
-		Brain	*p = new Brain();
-
-		*p = *other.brain;
-		delete brain;
-		brain = p;
+		*brain = *(other.brain);
+		type = other.type;
 	}
 	return *this;
 }
@@ -35,9 +33,4 @@ Cat &Cat::operator=(Cat const &other)
 void	Cat::makeSound() const
 {
 	std::cout << "meow" << std::endl;
-}
-
-void	Cat::printBrainPtr() const
-{
-	std::cout << "brain ptr: " << &brain << std::endl;
 }
