@@ -21,6 +21,7 @@ Animal &Animal::operator=(Animal const &other)
 {
     if (this != &other)
     {
+		type = other.getType();
     }
     return *this;
 }

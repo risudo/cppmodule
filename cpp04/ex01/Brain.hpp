@@ -6,10 +6,10 @@
 class Brain
 {
 public:
-    Brain();
-    virtual ~Brain();
-    Brain(Brain const &other);
-    Brain &operator=(Brain const &other);
+	Brain();
+	virtual ~Brain();
+	Brain(Brain const &other);
+	Brain &operator=(Brain const &other);
 
 private:
 	std::string	ideas[100];
