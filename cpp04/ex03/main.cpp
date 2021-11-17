@@ -61,5 +61,5 @@ int	main()
 {
 	test1();
 	test2();
-	system("leaks a.out");
+	//system("leaks a.out");
 }

@@ -32,6 +32,10 @@ Character::~Character()
 
 Character::Character(Character const &other)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		_inventory[i] = NULL;
+	}
 	*this = other;
 }
 
@@ -41,7 +45,10 @@ Character &Character::operator=(Character const &other)
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			delete _inventory[i];
+			if (_inventory[i] != NULL)
+			{
+				delete _inventory[i];
+			}
 			if (other._inventory[i] != NULL) {
 				_inventory[i] = other._inventory[i]->clone();
 			} else {
@@ -66,7 +73,6 @@ void	Character::equip(AMateria *m)
 	{
 		if (_inventory[i] == m)
 		{
-			std::cout << "has been equiped this materia" << std::endl;
 			return ;
 		}
 		if (_inventory[i] == NULL)

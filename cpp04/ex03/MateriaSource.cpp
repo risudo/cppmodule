@@ -55,7 +55,6 @@ void	MateriaSource::learnMateria(AMateria *m)
 	{
 		if (_inventory[i] == m)
 		{
-			std::cout << "has been learned this materia" << std::endl;
 			return ;
 		}
 		if (_inventory[i] == NULL)
