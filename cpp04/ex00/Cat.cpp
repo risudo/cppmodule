@@ -19,10 +19,11 @@ Cat::Cat(Cat const &other)
 
 Cat &Cat::operator=(Cat const &other)
 {
-    if (this != &other)
-    {
-    }
-    return *this;
+	if (this != &other)
+	{
+		type = other.type;
+	}
+	return *this;
 }
 
 void	Cat::makeSound() const

@@ -19,10 +19,11 @@ Animal::Animal(Animal const &other)
 
 Animal &Animal::operator=(Animal const &other)
 {
-    if (this != &other)
-    {
-    }
-    return *this;
+	if (this != &other)
+	{
+		type = other.getType();
+	}
+	return *this;
 }
 
 std::string	Animal::getType() const

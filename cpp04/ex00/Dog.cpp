@@ -14,15 +14,16 @@ Dog::~Dog()
 
 Dog::Dog(Dog const &other)
 {
-    *this = other;
+	*this = other;
 }
 
 Dog &Dog::operator=(Dog const &other)
 {
-    if (this != &other)
-    {
-    }
-    return *this;
+	if (this != &other)
+	{
+		type = other.type;
+	}
+	return *this;
 }
 
 void	Dog::makeSound() const
