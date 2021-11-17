@@ -1,6 +1,5 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongCat.hpp"
 #include <iostream>
 
 int	main()
@@ -20,11 +19,9 @@ int	main()
 
 	std::cout << std::endl;
 
-	// brain test
-
 	for (int i = 0; i < 8; i++)
 	{
 		delete a[i];
 	}
-	/* system("leaks a.out"); */
+	//system("leaks a.out");
 }
