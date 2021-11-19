@@ -1,26 +1,18 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-Bureaucrat::GradeTooHighException::GradeTooHighException()
-{
-}
-
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &message):
 	_message(message)
 {
 }
 
-Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
+Bureaucrat::GradeTooHighException::~GradeTooHighException() _NOEXCEPT
 {
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw()
+const char *Bureaucrat::GradeTooHighException::what() const _NOEXCEPT
 {
 	return _message.c_str();
-}
-
-Bureaucrat::GradeTooLowException::GradeTooLowException()
-{
 }
 
 Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &message):
@@ -28,11 +20,11 @@ Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &messag
 {
 }
 
-Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
+Bureaucrat::GradeTooLowException::~GradeTooLowException() _NOEXCEPT
 {
 }
 
-const char *Bureaucrat::GradeTooLowException::what() const throw()
+const char *Bureaucrat::GradeTooLowException::what() const _NOEXCEPT
 {
 	return _message.c_str();
 }
