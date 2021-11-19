@@ -10,9 +10,8 @@ int	main()
 	try {
 		ShrubberyCreationForm sformA("sformA");
 		Bureaucrat a("a", 130);
-		sformA.execute(a);
 		a.signForm(sformA);
-		sformA.execute(a);
+		a.executeForm(sformA);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -22,7 +21,7 @@ int	main()
 		ShrubberyCreationForm sformB("a");
 		Bureaucrat b("b", 140);
 		b.signForm(sformB);
-		sformB.execute(b);
+		b.executeForm(sformB);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -32,7 +31,7 @@ int	main()
 		RobotomyRequestForm rformA("rformA");
 		Bureaucrat c("c", 40);
 		c.signForm(rformA);
-		rformA.execute(c);
+		c.executeForm(rformA);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -42,7 +41,7 @@ int	main()
 		PresidentialPardonForm pformA("pformA");
 		Bureaucrat d("e", 5);
 		d.signForm(pformA);
-		pformA.execute(d);
+		d.executeForm(pformA);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}

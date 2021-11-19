@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-# include "Form.hpp"
+#include "Form.hpp"
 #include <iostream>
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &message):
@@ -111,9 +111,23 @@ void Bureaucrat::signForm(Form &f)
 	std::cout << "<"<< _name << "> signs " << f.getName() << std::endl;
 }
 
+void Bureaucrat::executeForm(Form const &form)
+{
+	try {
+		form.execute(*this);
+		std::cout << "aciton was successful" << std::endl;
+	} catch (const char *msg) {
+		std::cout << msg << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+}
+
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b)
 {
 	out << "<" << b.getName() << ">";
 	out << " grade: " << b.getGrade();
 	return out;
 }
+

@@ -112,14 +112,14 @@ void Form::execute(Bureaucrat const &executor) const
 	if (_is_signed == false)
 	{
 		std::cout << _name << " is not signed" << std::endl;
-		return ;
+		throw "is not signed";
+		std::cout << "throw" << std::endl;
 	}
 	if (executor.getGrade() > _grade_to_execute)
 	{
 		throw GradeTooLowException("<execute> grade is too low");
 	}
 	action();
-	std::cout << "aciton was successful" << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &out, Form &f)
