@@ -42,7 +42,7 @@ Form::Form(std::string const &name, int grade_to_sign, int grade_to_execute, std
 	}
 	if (_grade_to_sign > 150 || _grade_to_execute > 150)
 	{
-		throw GradeTooHighException("<constructor> too high");
+		throw GradeTooLowException("<constructor> too low");
 	}
 }
 
@@ -51,7 +51,7 @@ Form::~Form()
 }
 
 Form::Form(Form const &other):
-	_name(""), _grade_to_sign(other.getGradeToSign()), _grade_to_execute(other.getGradeToExecute())
+	_name(other.getName()), _grade_to_sign(other.getGradeToSign()), _grade_to_execute(other.getGradeToExecute())
 {
 	if (_grade_to_sign < 1 || _grade_to_execute < 1)
 	{
@@ -59,7 +59,7 @@ Form::Form(Form const &other):
 	}
 	if (_grade_to_sign > 150 || _grade_to_execute > 150)
 	{
-		throw GradeTooHighException("<constructor> too high");
+		throw GradeTooLowException("<constructor> too low");
 	}
 	*this = other;
 }
