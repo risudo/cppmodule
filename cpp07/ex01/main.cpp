@@ -1,15 +1,25 @@
 #include <iostream>
 #include "iter.hpp"
+#include <string>
 
 int main()
 {
-	char arr1[] = {'a', 'b', 'c', 'd'};
-	int arr2[] = {1, 2, 3, 4, 5, 6};
+	{
+		std::cout << "--- test1 ---" << std::endl;
+		char arr[] = {'a', 'b', 'c', 'd'};
+		iter(arr, 3, &write);
+	}
 
-	std::cout << "--- test1 ---" << std::endl;
-	iter(arr1, 3, &write);
+	{
+		std::cout << "\n--- test2 ---" << std::endl;
+		int arr[] = {1, 2, 3, 4, 5, 6};
+		iter(arr, 6, &write);
+	}
 
-	std::cout << "\n--- test2 ---" << std::endl;
-	iter(arr2, 5, &write);
+	{
+		std::cout << "\n--- test3 ---" << std::endl;
+		std::string arr[] = {"hgoe", "fuga"};
+		iter(arr, 5, &write);
+	}
 }
 

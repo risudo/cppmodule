@@ -3,8 +3,9 @@
 template<typename T>
 void write(T a)
 {
-	std::cout << a;
+	std::cout << a << std::endl;
 }
+
 
 template<typename T>
 void iter(T *arr, std::size_t len, void (*func)(T))
