@@ -1,5 +1,8 @@
 #include "Account.hpp"
 #include <iostream>
+#include <sstream>
+#include <string>
+#include <iomanip>
 
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
@@ -53,7 +56,7 @@ void	Account::displayAccountsInfos( void )
 	_displayTimestamp();
 	std::cout << "accounts:" << getNbAccounts() << ";"
 		<< "total:" << getTotalAmount() << ";"
-		<< "deposits:" << getNbDeposits() << ";" 
+		<< "deposits:" << getNbDeposits() << ";"
 		<< "withdrawals:" << getNbWithdrawals() << std::endl;
 }
 
@@ -113,5 +116,19 @@ void	Account::displayStatus( void ) const
 
 void	Account::_displayTimestamp( void )
 {
-	std::cout << "[19920104_091532] ";
+	time_t t = time(nullptr);
+    const tm *localTime = localtime(&t);
+	if (localTime == NULL)
+	{
+		std::exit(1);
+	}
+
+    std::stringstream s;
+    s << "20" << localTime->tm_year - 100;
+    s << std::setw(2) << std::setfill('0') << localTime->tm_mon + 1;
+    s << std::setw(2) << std::setfill('0') << localTime->tm_mday << "_";
+    s << std::setw(2) << std::setfill('0') << localTime->tm_hour;
+    s << std::setw(2) << std::setfill('0') << localTime->tm_min;
+    s << std::setw(2) << std::setfill('0') << localTime->tm_sec;
+	std::cout << "[" << std::string(s.str()) << "]";
 }
