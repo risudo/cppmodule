@@ -20,10 +20,10 @@ public:
 	bool	operator==(Fixed const &fixed) const;
 	bool	operator!=(Fixed const &fixed) const;
 
-	Fixed	operator+(Fixed const &fixed);
-	Fixed	operator-(Fixed const &fixed);
-	Fixed	operator*(Fixed const &fixed);
-	Fixed	operator/(Fixed const &fixed);
+	Fixed	operator+(Fixed const &fixed) const;
+	Fixed	operator-(Fixed const &fixed) const;
+	Fixed	operator*(Fixed const &fixed) const;
+	Fixed	operator/(Fixed const &fixed) const;
 
 	Fixed	operator++(int);
 	Fixed	operator--(int);
@@ -36,7 +36,9 @@ public:
 	int		toInt(void) const;
 
 	static Fixed const &max(const Fixed &a, const Fixed &b);
+	static Fixed &max(Fixed &a, Fixed &b);
 	static Fixed const &min(const Fixed &a, const Fixed &b);
+	static Fixed &min(Fixed &a, Fixed &b);
 
 private:
 	int					_value;

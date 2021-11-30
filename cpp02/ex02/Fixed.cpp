@@ -82,7 +82,7 @@ bool	Fixed::operator!=(Fixed const &fixed) const
 	return (_value != fixed.getRawBits());
 }
 
-Fixed	Fixed::operator+(Fixed const &fixed)
+Fixed	Fixed::operator+(Fixed const &fixed) const
 {
 	Fixed	ret;
 
@@ -90,7 +90,7 @@ Fixed	Fixed::operator+(Fixed const &fixed)
 	return (ret);
 }
 
-Fixed	Fixed::operator-(Fixed const &fixed)
+Fixed	Fixed::operator-(Fixed const &fixed) const
 {
 	Fixed	ret;
 
@@ -98,7 +98,7 @@ Fixed	Fixed::operator-(Fixed const &fixed)
 	return (ret);
 }
 
-Fixed	Fixed::operator*(Fixed const &fixed)
+Fixed	Fixed::operator*(Fixed const &fixed) const
 {
 	long	left = _value;
 	long	right = fixed.getRawBits();
@@ -108,7 +108,7 @@ Fixed	Fixed::operator*(Fixed const &fixed)
 	return (ret);
 }
 
-Fixed	Fixed::operator/(Fixed const &fixed)
+Fixed	Fixed::operator/(Fixed const &fixed) const
 {
 	Fixed	ret;
 
@@ -161,7 +161,23 @@ Fixed	const &Fixed::max(const Fixed &a, const Fixed &b)
 		return (b);
 }
 
+Fixed	&Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
+}
+
 Fixed	const &Fixed::min(const Fixed &a, const Fixed &b)
+{
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
+
+Fixed	 &Fixed::min(Fixed &a, Fixed &b)
 {
 	if (a < b)
 		return (a);
