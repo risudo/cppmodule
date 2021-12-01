@@ -22,12 +22,12 @@ Dog::Dog(Dog const &other)
 
 Dog &Dog::operator=(Dog const &other)
 {
-    if (this != &other)
-    {
+	if (this != &other)
+	{
 		*brain = *(other.brain);
 		type = other.type;
-    }
-    return *this;
+	}
+	return *this;
 }
 
 void	Dog::makeSound() const

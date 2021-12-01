@@ -4,7 +4,7 @@
 Animal::Animal():
 	type("Animal")
 {
-	std::cout << "Aniaml constructor called" << std::endl;
+	std::cout << "Animal constructor called" << std::endl;
 }
 
 Animal::~Animal()
