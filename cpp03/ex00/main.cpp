@@ -3,8 +3,11 @@
 int	main(void)
 {
 	ClapTrap a("a");
-	ClapTrap b("b");
 
 	a.attack("b");
-	b.takeDamege(10);
+	a.takeDamege(7);
+	a.takeDamege(7);
+	a.takeDamege(7);
+	a.beRepaired(5);
+	a.takeDamege(6);
 }

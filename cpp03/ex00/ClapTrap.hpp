@@ -1,4 +1,7 @@
-#include <string>
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
+
+# include <string>
 
 class ClapTrap
 {
@@ -7,16 +10,17 @@ public:
 	ClapTrap(std::string name);
 	ClapTrap(const ClapTrap &claptrap);
 	~ClapTrap();
+	ClapTrap	&operator=(const ClapTrap &r);
 
 	void	attack(std::string const &target);
 	void	takeDamege(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 
-	ClapTrap	&operator=(const ClapTrap &r);
-
 private:
-	std::string		Name;
-	unsigned int	Hitpoints;
-	unsigned int	Energy_points;
-	unsigned int	Attack_damage;
+	std::string		_Name;
+	unsigned int	_Hitpoints;
+	unsigned int	_EnergyPoints;
+	unsigned int	_AttackDamage;
 };
+
+#endif
