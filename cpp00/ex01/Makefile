@@ -19,4 +19,8 @@ fclean : clean
 
 re : fclean all
 
+sanitize: $(OBJS)
+	$(CXX) $(CXXFLAGS) -fsanitize=undefined -fsanitize=address -o $(NAME) $(OBJS)
+
+
 .PHONY: all clean fclean re

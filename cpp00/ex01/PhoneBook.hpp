@@ -12,7 +12,7 @@ public:
 
 private:
 	void	add_contact(int idx);
-	void	print_simple_contacts();
+	void	print_contacts_list();
 	void	print_short_format(int idx);
 	void	ask_index();
 	void	print_all_field(int idx);

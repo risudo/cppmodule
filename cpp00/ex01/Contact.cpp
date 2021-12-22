@@ -6,7 +6,6 @@ Contact::Contact():
 {
 }
 
-
 std::string	Contact::get_first_name() const
 {
 	return (first_name);
