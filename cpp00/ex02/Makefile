@@ -5,8 +5,8 @@ SRCS =	tests.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
-CXX = clang++ -std=gnu++98
-CXXFLAGS = -Wall -Wextra -Werror
+CXX = clang++
+CXXFLAGS = -Wall -Wextra -Werror -std=gnu++98
 
 all : $(NAME)
 
