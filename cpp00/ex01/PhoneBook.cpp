@@ -14,11 +14,13 @@ void put_nchar(unsigned long n, std::string c) {
 }
 
 unsigned long ft_max(unsigned long *l, int num) {
-    if (l == NULL) return 0;
+    if (l == NULL)
+        return 0;
     unsigned long max = l[0];
 
     for (int i = 1; i < num; i++) {
-        if (l[i] > max) max = l[i];
+        if (l[i] > max)
+            max = l[i];
     }
     return max;
 }
@@ -31,12 +33,10 @@ void PhoneBook::print_all_field(int idx) {
     std::string darkest_secret = contact[idx].get_darkest_secret();
 
     unsigned long len[] = {
-        first_name.length(),
-        nickname.length(),
-        phone_number.length(),
-        darkest_secret.length(),
+        first_name.length(),   last_name.length(),      nickname.length(),
+        phone_number.length(), darkest_secret.length(),
     };
-    unsigned long max_len = ft_max(len, 4);
+    unsigned long max_len = ft_max(len, 5);
     std::cout << "╭";
     put_nchar(max_len + 18, "─");
     std::cout << "╮\n"
@@ -133,7 +133,8 @@ void PhoneBook::add_contact(int idx) {
     for (int i = 0; i < 5; i++) {
         std::cout << fields[i] << " : " << std::flush;
         getline(std::cin, line[i]);
-        if (!std::cin) std::exit(0);
+        if (!std::cin)
+            std::exit(0);
     }
     contact[idx - 1].set_data(line, idx);
 }
@@ -158,6 +159,7 @@ void PhoneBook::run() {
         } else if (cmd != "") {
             std::cout << "command not found" << std::endl;
         }
-        if (idx == 9) idx = 1;
+        if (idx == 9)
+            idx = 1;
     }
 }
