@@ -1,13 +1,13 @@
 NAME = a.out
 
-SRCS =	main.cpp \
-		ClapTrap.cpp
+CXX = clang++
+CXXFLAGS = -Wall -Wextra -Werror -MMD -MP -std=gnu++98 -pedantic
 
+SRCS_TEST = ClapTrap.cpp
+SRCS =	main.cpp $(SRCS_TEST)
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 
-CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror -MMD -MP -std=gnu++98 -pedantic
 
 all: $(NAME)
 
