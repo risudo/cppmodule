@@ -2,13 +2,13 @@ NAME = a.out
 
 SRCS =	main.cpp \
 		ClapTrap.cpp \
-		ScavTrap.cpp
+		ScavTrap.cpp \
+		FragTrap.cpp
 
 OBJS = $(SRCS:.cpp=.o)
-DEPS = $(SRCS:.cpp=.d)
 
 CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror -MMD -MP -std=gnu++98 -pedantic
+CXXFLAGS = -Wall -Wextra -Werror -std=gnu++98
 
 all: $(NAME)
 
@@ -16,13 +16,9 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	$(RM) $(OBJS) $(DEPS)
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
-
--include $(DEPS)
-
-.PHONY: all clean fclean re
