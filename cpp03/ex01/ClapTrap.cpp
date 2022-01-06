@@ -27,8 +27,8 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &r) {
 }
 
 void ClapTrap::attack(std::string const &target) {
-    std::cout << _Name << " attacks " << target << ", causing " << _AttackDamage
-              << " points of damage!" << std::endl;
+    std::cout << "ClapTrap " << _Name << " attacks " << target << ", causing "
+              << _AttackDamage << " points of damage!" << std::endl;
 }
 
 void ClapTrap::takeDamege(unsigned int amount) {
