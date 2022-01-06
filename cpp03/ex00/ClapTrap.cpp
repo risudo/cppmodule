@@ -12,6 +12,8 @@ ClapTrap::ClapTrap(std::string _Name)
     std::cout << "ClapTrap " << _Name << " Constructor called" << std::endl;
 }
 
+ClapTrap::ClapTrap(const ClapTrap &other) { *this = other; }
+
 ClapTrap::~ClapTrap() {
     std::cout << "ClapTrap " << _Name << " Destructor called" << std::endl;
 }
