@@ -28,6 +28,6 @@ int main(void) {
 
     Fixed d(10);
     Fixed e(11);
-
+	std::cout << "10 / 11 is " << d / e << std::endl;
     return 0;
 }

@@ -26,9 +26,7 @@ float Fixed::toFloat(void) const {
     return (static_cast<float>(_rowBits) / (1 << _offset));
 }
 
-int Fixed::toInt(void) const {
-    return (_rowBits / (1 << _offset));
-}
+int Fixed::toInt(void) const { return (_rowBits / (1 << _offset)); }
 
 bool Fixed::operator>(Fixed const &fixed) const {
     return (_rowBits > fixed.getRawBits());
@@ -82,9 +80,10 @@ Fixed Fixed::operator/(Fixed const &fixed) const {
 
     if (fixed.getRawBits() == 0) {
         std::cout << "division by 0" << std::endl;
-        exit(1);
+        return ret;
     }
-    ret.setRawBits(_rowBits / fixed.getRawBits() * (1 << _offset));
+    long left = _rowBits;
+    ret.setRawBits(static_cast<int>(left * (1 << _offset) / fixed.getRawBits()));
     return (ret);
 }
 
