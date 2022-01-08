@@ -14,8 +14,12 @@ public:
     virtual ~DiamondTrap();
     void attack(std::string const &target);
 	std::string getName() const;
-	std::string _Name;
+    unsigned int getHitpoints() const;
+    unsigned int getEnergyPoints() const;
+    unsigned int getAttackDamage() const;
     void WhoAmI();
+private:
+	std::string _Name;
 };
 
 #endif
