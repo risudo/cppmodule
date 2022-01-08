@@ -7,7 +7,10 @@ DiamondTrap::DiamondTrap() {
 
 DiamondTrap::DiamondTrap(std::string const &name) {
     _Name = name;
-    FragTrap::setName(name + "_clap_name");
+    setName(name + "_clap_name");
+	_Hitpoints = FragTrap::_Hitpoints;
+	_EnergyPoints = ScavTrap::_EnergyPoints;
+	_AttackDamage = FragTrap::_AttackDamage;
 }
 
 DiamondTrap::~DiamondTrap() {}

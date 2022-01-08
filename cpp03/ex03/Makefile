@@ -6,7 +6,8 @@ CXXFLAGS = -Wall -Wextra -Werror -MMD -MP -std=gnu++98 -pedantic
 SRCS =	main.cpp \
 		ClapTrap.cpp \
 		FragTrap.cpp \
-		ScavTrap.cpp
+		ScavTrap.cpp \
+		DiamondTrap.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)

@@ -1,12 +1,8 @@
-#include "ClapTrap.hpp"
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
+#include <iostream>
 
 int main(void) {
-    FragTrap a("a");
+	DiamondTrap d("diamond");
 
-    a.attack("b");
-    a.takeDamege(90);
-    a.takeDamege(20);
-    a.highFivesGuys();
+	d.ScavTrap::attack("enemy");
 }

@@ -3,13 +3,13 @@
 #include <iostream>
 
 ClapTrap::ClapTrap()
-    : _Name(""), _Hitpoints(10), _EnergyPoints(10), _AttackDamage(0) {
+    : _Hitpoints(10), _EnergyPoints(10), _AttackDamage(0), _Name("") {
     std::cout << "ClapTrap "
               << " Constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
-    : _Name(name), _Hitpoints(10), _EnergyPoints(10), _AttackDamage(0) {
+    : _Hitpoints(10), _EnergyPoints(10), _AttackDamage(0), _Name(name) {
     std::cout << "ClapTrap " << _Name << " Constructor called" << std::endl;
 }
 
