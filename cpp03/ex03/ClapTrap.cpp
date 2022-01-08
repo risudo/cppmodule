@@ -5,12 +5,12 @@
 ClapTrap::ClapTrap()
     : _Hitpoints(10), _EnergyPoints(10), _AttackDamage(0), _Name("") {
     std::cout << "ClapTrap "
-              << " Constructor called" << std::endl;
+              << "Constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
     : _Hitpoints(10), _EnergyPoints(10), _AttackDamage(0), _Name(name) {
-    std::cout << "ClapTrap " << _Name << " Constructor called" << std::endl;
+    std::cout << "ClapTrap" << _Name << " Constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) { *this = other; }

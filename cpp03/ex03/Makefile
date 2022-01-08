@@ -1,7 +1,7 @@
 NAME = a.out
 
 CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror -MMD -MP -std=gnu++98 -pedantic
+CXXFLAGS = -Wall -Wextra -Werror -Wshadow -MMD -MP -std=gnu++98 -pedantic
 
 SRCS =	main.cpp \
 		ClapTrap.cpp \

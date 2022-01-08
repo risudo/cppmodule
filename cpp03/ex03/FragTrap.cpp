@@ -3,7 +3,7 @@
 #include <iostream>
 
 FragTrap::FragTrap() {
-    std::cout << "Flag Trap default constructor called" << std::endl;
+    std::cout << "FlagTrap default constructor called" << std::endl;
     setName("");
     _Hitpoints = 100;
     _EnergyPoints = 100;
@@ -11,7 +11,7 @@ FragTrap::FragTrap() {
 }
 
 FragTrap::FragTrap(std::string const &name) {
-    std::cout << "Flag Trap "
+    std::cout << "FlagTrap "
               << "constructor called" << std::endl;
     setName(name);
     _Hitpoints = 100;
