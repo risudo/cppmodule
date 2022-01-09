@@ -12,6 +12,11 @@ public:
 
     void attack(std::string const &target);
     void highFivesGuys(void);
+
+protected:
+    unsigned int FragTrap_Hitpoints;
+    unsigned int FragTrap_EnergyPoints;
+    unsigned int FragTrap_AttackDamage;
 };
 
 #endif

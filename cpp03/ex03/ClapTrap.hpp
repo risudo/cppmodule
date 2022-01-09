@@ -13,15 +13,16 @@ public:
     void attack(std::string const &target);
     void takeDamege(unsigned int amount);
     void beRepaired(unsigned int amount);
-	std::string getName() const;
+    std::string getName() const;
 
 protected:
-	void setName(const std::string &name);
+    void setName(const std::string &name);
     unsigned int _Hitpoints;
     unsigned int _EnergyPoints;
     unsigned int _AttackDamage;
+
 private:
-	std::string _Name;
+    std::string _Name;
 };
 
 #endif
