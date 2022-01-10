@@ -1,9 +1,11 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 
 #include "Converter.hpp"
 
 void printConvert(std::string str) {
+		std::cout << "str: " << str << std::endl;
     Converter conv(str);
 
     if (conv.init() == -1) {
@@ -14,6 +16,8 @@ void printConvert(std::string str) {
         return;
     }
 
+    std::cout << str << " type: " << conv.getType() << std::endl;
+    return;
     s_char c = conv.toChar();
     if (c.imposible == true) {
         std::cout << "char: imposible" << std::endl;
@@ -49,5 +53,18 @@ int main(int argc, char **argv) {
         return 1;
     }
     printConvert(argv[1]);
+	std::cout << "\n";
+    printConvert("2147483648");
+	std::cout << "\n";
+    printConvert("aa");
+	std::cout << "\n";
+    printConvert("+inf");
+	std::cout << "\n";
+    printConvert("0f");
+	std::cout << "\n";
+    printConvert("10");
+	std::cout << "\n";
+    printConvert("10.0");
+
     return 0;
 }

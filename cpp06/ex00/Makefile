@@ -1,11 +1,11 @@
 NAME = convert
 
-SRCS =	main.cpp 
+SRCS =	main.cpp Converter.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-CXX = clang++ -std=gnu++98 -pedantic
-CXXFLAGS = -Wall -Wextra -Werror
+CXX = clang++
+CXXFLAGS = -Wall -Wextra -Werror -std=gnu++98 -pedantic
 
 all: $(NAME)
 

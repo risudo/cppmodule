@@ -32,14 +32,19 @@ public:
     virtual ~Converter();
     Converter(Converter const &other);
     Converter &operator=(Converter const &other);
-    void convert();
-	int init();
+    int init();
     s_char toChar();
     s_int toInt();
     s_float toFloat();
     s_double toDouble();
+    e_type getType() const;
 
 private:
+    void detectType();
+    void acquireChar();
+    void acquireInt();
+    void acquireFloat();
+    void acquireDouble();
     std::string _str;
     e_type _type;
     s_char _c;
