@@ -52,3 +52,5 @@ void ClapTrap::beRepaired(unsigned int amount) {
 std::string ClapTrap::getName() const { return _Name; }
 
 void ClapTrap::setName(const std::string &name) { _Name = name; }
+
+unsigned int ClapTrap::getEnergyPoints() const { return _EnergyPoints; }

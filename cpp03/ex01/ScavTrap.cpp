@@ -3,19 +3,19 @@
 #include <iostream>
 
 ScavTrap::ScavTrap() {
-    std::cout << "ScavTrap default constructor called" << std::endl;
-    _Name = "";
+    _Name = "NONAME";
     _Hitpoints = 100;
     _EnergyPoints = 50;
     _AttackDamage = 20;
+    std::cout << "ScavTrap " << _Name << " constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) {
-    std::cout << "ScavTrap " << name << " constructor called" << std::endl;
     _Name = name;
     _Hitpoints = 100;
     _EnergyPoints = 50;
     _AttackDamage = 20;
+    std::cout << "ScavTrap " << _Name << " constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap const &other) { *this = other; }

@@ -16,7 +16,7 @@ ClapTrap::ClapTrap(std::string name)
 ClapTrap::ClapTrap(const ClapTrap &other) { *this = other; }
 
 ClapTrap::~ClapTrap() {
-    std::cout << "ClapTrap " << _Name << " Destructor called" << std::endl;
+    std::cout << "ClapTrap " << _Name << " destructor called" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &r) {
@@ -48,3 +48,5 @@ void ClapTrap::beRepaired(unsigned int amount) {
     std::cout << _Name << " is repaired " << amount << " points" << std::endl;
     _Hitpoints += amount;
 }
+
+unsigned int ClapTrap::getEnergyPoints() const { return _EnergyPoints; }

@@ -8,13 +8,12 @@ DiamondTrap::DiamondTrap() {
 }
 
 DiamondTrap::DiamondTrap(std::string const &name) {
-    std::cout << "DiamondTrap "
-              << "constructor called" << std::endl;
+    std::cout << "DiamondTrap constructor called" << std::endl;
     setName(name + "_clap_name");
     _Name = name;
-    _Hitpoints = FragTrap_Hitpoints;
-    _EnergyPoints = FragTrap_EnergyPoints;
-    _AttackDamage = FragTrap_AttackDamage;
+    _Hitpoints = FragTrap::defaultHitpoints;
+    _EnergyPoints = FragTrap::defaultEnergyPoints;
+    _AttackDamage = FragTrap::defaultAttackDamage;
 }
 
 DiamondTrap::~DiamondTrap() {
@@ -28,6 +27,9 @@ DiamondTrap &DiamondTrap::operator=(DiamondTrap const &other) {
     if (this != &other) {
         _Name = other._Name;
         FragTrap::setName(other.FragTrap::getName());
+        _Hitpoints = other._Hitpoints;
+        _EnergyPoints = other._EnergyPoints;
+        _AttackDamage = other._AttackDamage;
     }
     return *this;
 }
@@ -45,6 +47,6 @@ unsigned int DiamondTrap::getEnergyPoints() const { return _EnergyPoints; }
 unsigned int DiamondTrap::getAttackDamage() const { return _AttackDamage; }
 
 void DiamondTrap::WhoAmI() {
-    std::cout << "Name:" << _Name << std::endl;
-    std::cout << "ClapTrap Name: " << ClapTrap::getName() << std::endl;
+    std::cout << "< Name >         : " << _Name << std::endl;
+    std::cout << "< ClapTrap Name >: " << ClapTrap::getName() << std::endl;
 }

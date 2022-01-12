@@ -13,6 +13,7 @@ public:
     void attack(std::string const &target);
     void takeDamege(unsigned int amount);
     void beRepaired(unsigned int amount);
+    unsigned int getEnergyPoints() const;
 
 protected:
     std::string _Name;

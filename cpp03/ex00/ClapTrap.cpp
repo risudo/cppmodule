@@ -3,19 +3,19 @@
 #include <iostream>
 
 ClapTrap::ClapTrap()
-    : _Name(""), _Hitpoints(10), _EnergyPoints(10), _AttackDamage(0) {
-    std::cout << "ClapTrap" << _Name << " Constructor called" << std::endl;
+    : _Name("NONAME"), _Hitpoints(10), _EnergyPoints(10), _AttackDamage(0) {
+    std::cout << "ClapTrap " << _Name << " Constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string _Name)
-    : _Name(_Name), _Hitpoints(10), _EnergyPoints(10), _AttackDamage(0) {
+ClapTrap::ClapTrap(std::string name)
+    : _Name(name), _Hitpoints(10), _EnergyPoints(10), _AttackDamage(0) {
     std::cout << "ClapTrap " << _Name << " Constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) { *this = other; }
 
 ClapTrap::~ClapTrap() {
-    std::cout << "ClapTrap " << _Name << " Destructor called" << std::endl;
+    std::cout << "ClapTrap " << _Name << " destructor called" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &r) {
@@ -48,3 +48,5 @@ void ClapTrap::beRepaired(unsigned int amount) {
               << std::endl;
     _Hitpoints += amount;
 }
+
+unsigned int ClapTrap::getEnergyPoints() const { return _EnergyPoints; }

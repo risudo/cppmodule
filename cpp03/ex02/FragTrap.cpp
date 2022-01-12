@@ -3,20 +3,19 @@
 #include <iostream>
 
 FragTrap::FragTrap() {
-    std::cout << "Flag Trap default constructor called" << std::endl;
-    _Name = "";
+    _Name = "NONAME";
     _Hitpoints = 100;
     _EnergyPoints = 100;
     _AttackDamage = 30;
+    std::cout << "Flag Trap " << _Name << "constructor called" << std::endl;
 }
 
 FragTrap::FragTrap(std::string const &name) {
-    std::cout << "Flag Trap "
-              << "constructor called" << std::endl;
     _Name = name;
     _Hitpoints = 100;
     _EnergyPoints = 100;
     _AttackDamage = 30;
+    std::cout << "Flag Trap " << _Name << "constructor called" << std::endl;
 }
 
 FragTrap::FragTrap(FragTrap const &other) { *this = other; }
@@ -41,5 +40,5 @@ void FragTrap::attack(std::string const &target) {
 }
 
 void FragTrap::highFivesGuys(void) {
-    std::cout << "positive high five request" << std::endl;
+    std::cout << "FragTrap " << _Name << " request positive high five" << std::endl;
 }

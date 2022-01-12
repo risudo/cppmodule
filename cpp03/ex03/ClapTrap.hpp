@@ -14,6 +14,7 @@ public:
     void takeDamege(unsigned int amount);
     void beRepaired(unsigned int amount);
     std::string getName() const;
+    unsigned int getEnergyPoints() const;
 
 protected:
     void setName(const std::string &name);

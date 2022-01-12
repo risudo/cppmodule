@@ -14,9 +14,9 @@ public:
     void highFivesGuys(void);
 
 protected:
-    unsigned int FragTrap_Hitpoints;
-    unsigned int FragTrap_EnergyPoints;
-    unsigned int FragTrap_AttackDamage;
+    static const unsigned int defaultHitpoints;
+    static const unsigned int defaultEnergyPoints;
+    static const unsigned int defaultAttackDamage;
 };
 
 #endif

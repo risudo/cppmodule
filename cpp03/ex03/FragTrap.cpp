@@ -2,15 +2,16 @@
 
 #include <iostream>
 
+const unsigned int FragTrap::defaultHitpoints = 100;
+const unsigned int FragTrap::defaultEnergyPoints = 100;
+const unsigned int FragTrap::defaultAttackDamage = 30;
+
 FragTrap::FragTrap() {
     std::cout << "FlagTrap default constructor called" << std::endl;
     setName("");
     _Hitpoints = 100;
     _EnergyPoints = 100;
     _AttackDamage = 30;
-    FragTrap_Hitpoints = _Hitpoints;
-    FragTrap_EnergyPoints = _EnergyPoints;
-    FragTrap_AttackDamage = _AttackDamage;
 }
 
 FragTrap::FragTrap(std::string const &name) {
@@ -20,9 +21,6 @@ FragTrap::FragTrap(std::string const &name) {
     _Hitpoints = 100;
     _EnergyPoints = 100;
     _AttackDamage = 30;
-    FragTrap_Hitpoints = _Hitpoints;
-    FragTrap_EnergyPoints = _EnergyPoints;
-    FragTrap_AttackDamage = _AttackDamage;
 }
 
 FragTrap::FragTrap(FragTrap const &other) { *this = other; }
