@@ -5,26 +5,6 @@
 
 enum e_type { CHAR, INT, FLOAT, DOUBLE };
 
-struct s_char {
-    char value;
-    bool imposible;
-};
-
-struct s_int {
-    int value;
-    bool impossible;
-};
-
-struct s_float {
-    float value;
-    bool impossible;
-};
-
-struct s_double {
-    double value;
-    bool impossible;
-};
-
 class Converter {
 public:
     Converter();
@@ -33,24 +13,26 @@ public:
     Converter(Converter const &other);
     Converter &operator=(Converter const &other);
     int init();
-    s_char toChar();
-    s_int toInt();
-    s_float toFloat();
-    s_double toDouble();
     e_type getType() const;
+    void printConverted();
 
 private:
     void detectType();
     void acquireChar();
-    void acquireInt();
-    void acquireFloat();
-    void acquireDouble();
+    int acquireInt();
+    int acquireFloat();
+    int acquireDouble();
+    void intCase(std::string const type[]);
+    void floatCase(std::string const type[]);
+    void doubleCase(std::string const type[]);
+
     std::string _str;
+    bool _special;
     e_type _type;
-    s_char _c;
-    s_int _i;
-    s_float _f;
-    s_double _d;
+    char _c;
+    int _i;
+    float _f;
+    double _d;
 };
 
 #endif

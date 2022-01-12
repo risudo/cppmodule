@@ -2,20 +2,18 @@
 
 #include <cfloat>
 #include <climits>
+#include <iostream>
 #include <sstream>
 
 Converter::Converter() {}
 
 Converter::Converter(std::string str) {
     _str = str;
-    _c.value = 0;
-    _c.imposible = false;
-    _i.value = 0;
-    _i.impossible = false;
-    _f.value = 0.0f;
-    _f.impossible = false;
-    _d.value = 0.0;
-    _d.impossible = false;
+    _special = false;
+    _c = 0;
+    _i = 0;
+    _f = 0.0f;
+    _d = 0.0;
 }
 
 Converter::~Converter() {}
@@ -24,6 +22,12 @@ Converter::Converter(Converter const &other) { *this = other; }
 
 Converter &Converter::operator=(Converter const &other) {
     if (this != &other) {
+        _str = other._str;
+        _special = other._special;
+        _c = other._c;
+        _i = other._i;
+        _f = other._f;
+        _d = other._d;
     }
     return *this;
 }
@@ -33,10 +37,12 @@ e_type Converter::getType() const { return _type; }
 void Converter::detectType() {
     if (_str == "-inff" || _str == "+inff" || _str == "nanf") {
         _type = FLOAT;
+        _special = true;
         return;
     }
     if (_str == "-inf" || _str == "+inf" || _str == "nan") {
         _type = DOUBLE;
+        _special = true;
         return;
     }
     if (_str.length() == 1 && std::isprint(_str[0]) && !std::isdigit(_str[0])) {
@@ -62,42 +68,35 @@ void Converter::detectType() {
     _type = DOUBLE;
 }
 
-void Converter::acquireChar() {
-    _c.value = _str[0];
-    _c.imposible = false;
-}
+void Converter::acquireChar() { _c = _str[0]; }
 
-void Converter::acquireInt() {
-    bool minus = false;
+int Converter::acquireInt() {
+    bool sign = false;
     for (std::size_t i = 0; i < _str.length() - 1; i++) {
-        if (minus == false && _str[i] == '-') {
-            minus = true;
+        if (sign == false && (_str[i] == '-' || _str[i] == '+')) {
+            sign = true;
             continue;
         }
         if (!std::isdigit(_str[i])) {
-            _i.impossible = true;
-            return;
+            return -1;
         }
     }
-    std::stringstream s(_str);
-    s >> _i.value;
-    if (!s) {
-        _i.impossible = true;
+    std::istringstream s(_str);
+    if (!(s >> _i)) {
+        return -1;
     }
-    /* if (tmp > static_cast<double>(INT_MAX) || */
-    /*     tmp < static_cast<double>(INT_MIN)) { */
-    /*     _i.impossible = true; */
-    /*     return; */
-    /* } */
-    /* s >> _i.value; */
+    return 0;
 }
 
-void Converter::acquireFloat() {
+int Converter::acquireFloat() {
     bool dot = false;
-    bool minus = false;
+    bool sign = false;
     for (std::size_t i = 0; i < _str.length() - 1; i++) {
-        if (minus == false && _str[i] == '-') {
-            minus = true;
+        if (_special == true) {
+            break;
+        }
+        if (sign == false && (_str[i] == '-' || _str[i] == '+')) {
+            sign = true;
             continue;
         }
         if (dot == false && _str[i] == '.') {
@@ -105,22 +104,26 @@ void Converter::acquireFloat() {
             continue;
         }
         if (!std::isdigit(_str[i])) {
-            _f.impossible = true;
+            return -1;
         }
     }
-    std::stringstream s(_str);
-    s >> _f.value;
-    if (!s) {
-        _i.impossible = true;
+    _str.erase(_str.length() - 1);
+    std::istringstream s(_str);
+    if (!(s >> _f)) {
+        return -1;
     }
+    return 0;
 }
 
-void Converter::acquireDouble() {
+int Converter::acquireDouble() {
     bool dot = false;
-    bool minus = false;
+    bool sign = false;
     for (std::size_t i = 0; i < _str.length() - 1; i++) {
-        if (minus == false && _str[i] == '-') {
-            minus = true;
+        if (_special == true) {
+            break;
+        }
+        if (sign == false && (_str[i] == '-' || _str[i] == '+')) {
+            sign = true;
             continue;
         }
         if (dot == false && _str[i] == '.') {
@@ -128,34 +131,134 @@ void Converter::acquireDouble() {
             continue;
         }
         if (!std::isdigit(_str[i])) {
-            _d.impossible = true;
+            return -1;
         }
     }
     std::stringstream s(_str);
-    s >> _d.value;
-    if (!s) {
-        _i.impossible = true;
+    if (!(s >> _d)) {
+        return -1;
     }
+    return 0;
 }
 
 int Converter::init() {
     detectType();
-    bool impossible = false;
 
-    if (_type == CHAR) {
-        acquireChar();
-    } else if (_type == INT) {
-        acquireInt();
-        impossible = _i.impossible;
-    } else if (_type == FLOAT) {
-        acquireFloat();
-        impossible = _f.impossible;
-    } else if (_type == DOUBLE) {
-        acquireDouble();
-        impossible = _d.impossible;
-    }
-    if (impossible == true) {
-        return -1;
+    switch (_type) {
+        case CHAR:
+            acquireChar();
+            break;
+        case INT:
+            return acquireInt();
+        case FLOAT:
+            return acquireFloat();
+        case DOUBLE:
+            return acquireDouble();
     }
     return 0;
+}
+
+static bool isInRange(double const &value, double const &min,
+                      double const &max) {
+    return (value <= max && value >= min);
+}
+
+void putFloat(float const &value, std::string const &type) {
+    if (value - static_cast<int>(value) == static_cast<float>(0)) {
+        std::cout << type << value << ".0f" << std::endl;
+    } else {
+        std::cout << type << value << "f" << std::endl;
+    }
+}
+
+void putDouble(double const &value, std::string const &type) {
+    if (value - static_cast<int>(value) == static_cast<double>(0)) {
+        std::cout << type << value << ".0" << std::endl;
+    } else {
+        std::cout << type << value << std::endl;
+    }
+}
+
+void Converter::intCase(std::string const type[]) {
+    if (!isInRange(static_cast<double>(_i), static_cast<double>(CHAR_MIN),
+                   static_cast<double>(CHAR_MAX))) {
+        std::cout << type[CHAR] << "impossible" << std::endl;
+    } else if (!std::isprint(_i)) {
+        std::cout << type[CHAR] << "Non displayable" << std::endl;
+    } else {
+        std::cout << type[CHAR] << static_cast<char>(_i) << std::endl;
+    }
+
+    std::cout << type[INT] << _i << std::endl;
+    putFloat(static_cast<float>(_i), type[FLOAT]);
+    putDouble(static_cast<double>(_i), type[DOUBLE]);
+}
+
+void Converter::floatCase(std::string const type[]) {
+    if (!isInRange(static_cast<double>(_f), static_cast<double>(CHAR_MIN),
+                   static_cast<double>(CHAR_MAX))) {
+        std::cout << type[CHAR] << "impossible" << std::endl;
+    } else if (!std::isprint(static_cast<int>(_f))) {
+        std::cout << type[CHAR] << "Non displayable" << std::endl;
+    } else {
+        std::cout << type[CHAR] << static_cast<char>(_f) << std::endl;
+    }
+
+    if (!isInRange(static_cast<double>(_f), static_cast<double>(INT_MIN),
+                   static_cast<double>(INT_MAX))) {
+        std::cout << type[INT] << "impossible" << std::endl;
+    } else {
+        std::cout << type[INT] << static_cast<int>(_f) << std::endl;
+    }
+
+    putFloat(_f, type[FLOAT]);
+    putDouble(static_cast<double>(_f), type[FLOAT]);
+}
+
+void Converter::doubleCase(std::string const type[]) {
+    if (!isInRange(_d, static_cast<double>(CHAR_MIN),
+                   static_cast<double>(CHAR_MAX))) {
+        std::cout << type[CHAR] << "impossible" << std::endl;
+    } else if (!std::isprint(static_cast<int>(_d))) {
+        std::cout << type[CHAR] << "Non displayable" << std::endl;
+    } else {
+        std::cout << type[CHAR] << static_cast<char>(_d) << std::endl;
+    }
+
+    if (!isInRange(_d, static_cast<double>(INT_MIN),
+                   static_cast<double>(INT_MAX))) {
+        std::cout << type[INT] << "impossible" << std::endl;
+    } else {
+        std::cout << type[INT] << static_cast<int>(_d) << std::endl;
+    }
+
+    if (!_special && !isInRange(_d, static_cast<double>(FLT_MIN),
+                                static_cast<double>(FLT_MAX))) {
+        std::cout << type << "impossible" << std::endl;
+    } else {
+        putFloat(static_cast<float>(_d), type[FLOAT]);
+    }
+    putDouble(_d, type[DOUBLE]);
+}
+
+void Converter::printConverted() {
+    const std::string type[] = {"char: ", "int: ", "float: ", "double: "};
+
+    switch (_type) {
+        case CHAR:
+            std::cout << type[CHAR] << _c << std::endl;
+            std::cout << type[INT] << static_cast<int>(_c) << std::endl;
+            putFloat(static_cast<float>(_c), type[FLOAT]);
+            putDouble(static_cast<double>(_c), type[DOUBLE]);
+            break;
+        case INT:
+            intCase(type);
+            break;
+        case FLOAT:
+            floatCase(type);
+            break;
+        case DOUBLE:
+            doubleCase(type);
+            break;
+    }
 }
