@@ -2,6 +2,7 @@
 
 #include <cfloat>
 #include <climits>
+#include <iomanip>
 #include <iostream>
 #include <sstream>
 
@@ -165,7 +166,8 @@ static bool isInRange(double const &value, double const &min,
 
 void putFloat(float const &value, std::string const &type) {
     if (value - static_cast<int>(value) == static_cast<float>(0)) {
-        std::cout << type << value << ".0f" << std::endl;
+        std::cout << type << std::fixed << std::setprecision(0) << value
+                  << ".0f" << std::endl;
     } else {
         std::cout << type << value << "f" << std::endl;
     }
@@ -173,7 +175,8 @@ void putFloat(float const &value, std::string const &type) {
 
 void putDouble(double const &value, std::string const &type) {
     if (value - static_cast<int>(value) == static_cast<double>(0)) {
-        std::cout << type << value << ".0" << std::endl;
+        std::cout << type << std::fixed << std::setprecision(0) << value << ".0"
+                  << std::endl;
     } else {
         std::cout << type << value << std::endl;
     }
@@ -234,7 +237,7 @@ void Converter::doubleCase(std::string const type[]) {
 
     if (!_special && !isInRange(_d, static_cast<double>(FLT_MIN),
                                 static_cast<double>(FLT_MAX))) {
-        std::cout << type << "impossible" << std::endl;
+        std::cout << type[FLOAT] << "impossible" << std::endl;
     } else {
         putFloat(static_cast<float>(_d), type[FLOAT]);
     }

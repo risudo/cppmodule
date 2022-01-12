@@ -24,22 +24,32 @@ test ()
 	echo ""
 }
 
-test -129
-test -128
+echo -e $BLUE "--- erorr case ---" $RESET
+test aa
+test +2147483648
+test -2147483649
+
+echo -e $BLUE "--- char case ---" $RESET
 test !
 test a
+
+echo -e $BLUE "--- int case ---" $RESET
 test "\~"
 test +127
 test +128
-test -2147483649
-test -2147483648
+test -128
+test -129
 test 300
 test 2147483647
-test +2147483648
+test -2147483648
+
+echo -e $BLUE "--- float case ---" $RESET
 test 0.0f
-test nan
+test 2147483647f
+test 2147483648f
 test nanf
+
+echo -e $BLUE "--- double case ---" $RESET
+test nan
 test +inf
-test 2.225074e-308
-test 0.1e-300
 
