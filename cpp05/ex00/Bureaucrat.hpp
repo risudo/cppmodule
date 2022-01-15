@@ -1,45 +1,37 @@
 #ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
-# include <string>
-# include <exception>
+#define BUREAUCRAT_HPP
+#include <exception>
+#include <string>
 
-class Bureaucrat
-{
+class Bureaucrat {
 public:
-	Bureaucrat();
-	Bureaucrat(const std::string &name, int grade);
-	~Bureaucrat();
-	Bureaucrat(Bureaucrat const &other);
-	Bureaucrat &operator=(Bureaucrat const &other);
+    Bureaucrat();
+    Bureaucrat(const std::string &name, int grade);
+    ~Bureaucrat();
+    Bureaucrat(Bureaucrat const &other);
+    Bureaucrat &operator=(Bureaucrat const &other);
 
-	const std::string &getName() const;
-	int getGrade() const;
-	void upGrade();
-	void downGrade();
+    const std::string &getName() const;
+    int getGrade() const;
+    void upGrade();
+    void downGrade();
+
+    static const int maxGrade;
+    static const int minGrade;
 
 private:
-	class GradeTooHighException : public std::exception
-	{
-	public:
-		~GradeTooHighException() _NOEXCEPT;
-		GradeTooHighException(const std::string &message);
-		virtual const char *what() const _NOEXCEPT;
-	private:
-		std::string _message;
-	};
+    class GradeTooHighException : public std::out_of_range {
+    public:
+        GradeTooHighException(char const *msg);
+    };
 
-	class GradeTooLowException : public std::exception
-	{
-	public:
-		~GradeTooLowException() _NOEXCEPT;
-		GradeTooLowException(const std::string &message);
-		virtual const char *what() const _NOEXCEPT;
-	private:
-		std::string _message;
-	};
+    class GradeTooLowException : public std::out_of_range {
+    public:
+        GradeTooLowException(char const *msg);
+    };
 
-	const std::string _name;
-	int _grade;
+    const std::string _name;  // const?
+    int _grade;
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b);
