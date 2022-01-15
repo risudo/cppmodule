@@ -22,12 +22,12 @@ public:
 private:
     class GradeTooHighException : public std::out_of_range {
     public:
-        GradeTooHighException(char const *msg);
+        GradeTooHighException(const std::string &msg);
     };
 
     class GradeTooLowException : public std::out_of_range {
     public:
-        GradeTooLowException(char const *msg);
+        GradeTooLowException(const std::string &msg);
     };
 
     const std::string _name;  // const?

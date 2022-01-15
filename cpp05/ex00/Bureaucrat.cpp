@@ -5,10 +5,10 @@
 const int Bureaucrat::maxGrade = 1;
 const int Bureaucrat::minGrade = 150;
 
-Bureaucrat::GradeTooHighException::GradeTooHighException(char const *msg)
+Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &msg)
     : std::out_of_range(msg) {}
 
-Bureaucrat::GradeTooLowException::GradeTooLowException(char const *msg)
+Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &msg)
     : std::out_of_range(msg) {}
 
 Bureaucrat::Bureaucrat() : _grade(1) {}
