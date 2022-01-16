@@ -49,7 +49,7 @@ int main(void) {
         DiamondTrap d("diamond");
 
         std::cout << "EnergyPoints: " << d.getEnergyPoints()
-                  << std::endl;  // will be 100
+                  << std::endl;  // will be 50
         d.WhoAmI();
         d.attack("enemy");  // will cause 30 damage && call ScavTrap attack
         d.takeDamege(80);   // will take 80 damage

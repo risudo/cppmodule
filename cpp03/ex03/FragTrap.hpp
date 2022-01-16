@@ -14,9 +14,9 @@ public:
     void highFivesGuys(void);
 
 protected:
-    static const unsigned int defaultHitpoints;
-    static const unsigned int defaultEnergyPoints;
-    static const unsigned int defaultAttackDamage;
+    static const unsigned int defaultHitpoints = 100;
+    static const unsigned int defaultEnergyPoints = 100;
+    static const unsigned int defaultAttackDamage = 30;
 };
 
 #endif

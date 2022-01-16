@@ -13,6 +13,10 @@ public:
 
     void attack(std::string const &target);
     void guardGate();
+protected:
+    static const unsigned int defaultHitpoints = 100;
+    static const unsigned int defaultEnergyPoints = 50;
+    static const unsigned int defaultAttackDamage = 20;
 };
 
 #endif

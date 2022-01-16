@@ -2,10 +2,6 @@
 
 #include <iostream>
 
-const unsigned int FragTrap::defaultHitpoints = 100;
-const unsigned int FragTrap::defaultEnergyPoints = 100;
-const unsigned int FragTrap::defaultAttackDamage = 30;
-
 FragTrap::FragTrap() {
     std::cout << "FlagTrap default constructor called" << std::endl;
     setName("");

@@ -12,7 +12,7 @@ DiamondTrap::DiamondTrap(std::string const &name) {
     setName(name + "_clap_name");
     _Name = name;
     _Hitpoints = FragTrap::defaultHitpoints;
-    _EnergyPoints = FragTrap::defaultEnergyPoints;
+    _EnergyPoints = ScavTrap::defaultEnergyPoints;
     _AttackDamage = FragTrap::defaultAttackDamage;
 }
 
@@ -47,6 +47,6 @@ unsigned int DiamondTrap::getEnergyPoints() const { return _EnergyPoints; }
 unsigned int DiamondTrap::getAttackDamage() const { return _AttackDamage; }
 
 void DiamondTrap::WhoAmI() {
-    std::cout << "< Name >         : " << _Name << std::endl;
-    std::cout << "< ClapTrap Name >: " << ClapTrap::getName() << std::endl;
+    std::cout << "Name         : " << _Name << std::endl;
+    std::cout << "ClapTrap Name: " << ClapTrap::getName() << std::endl;
 }

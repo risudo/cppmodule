@@ -1,17 +1,17 @@
 NAME = a.out
 
-CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror -Wshadow -MMD -MP -std=gnu++98 -pedantic
-
 SRCS =	main.cpp \
 		ClapTrap.cpp \
-		FragTrap.cpp \
 		ScavTrap.cpp \
-		DiamondTrap.cpp
+		DiamondTrap.cpp \
+		FragTrap.cpp
+
 
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 
+CXX = clang++
+CXXFLAGS = -Wall -Wextra -Werror -MMD -MP -std=gnu++98 -pedantic
 
 all: $(NAME)
 

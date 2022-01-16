@@ -5,17 +5,17 @@
 ScavTrap::ScavTrap() {
     std::cout << "ScavTrap default constructor called" << std::endl;
     setName("");
-    _Hitpoints = 100;
-    _EnergyPoints = 50;
-    _AttackDamage = 20;
+    _Hitpoints = defaultHitpoints;
+    _EnergyPoints = defaultEnergyPoints;
+    _AttackDamage = defaultAttackDamage;
 }
 
 ScavTrap::ScavTrap(std::string name) {
     std::cout << "ScavTrap " << name << " constructor called" << std::endl;
     setName(name);
-    _Hitpoints = 100;
-    _EnergyPoints = 50;
-    _AttackDamage = 20;
+    _Hitpoints = defaultHitpoints;
+    _EnergyPoints = defaultEnergyPoints;
+    _AttackDamage = defaultAttackDamage;
 }
 
 ScavTrap::ScavTrap(ScavTrap const &other) { *this = other; }
