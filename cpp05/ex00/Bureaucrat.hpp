@@ -16,8 +16,8 @@ public:
     void upGrade();
     void downGrade();
 
-    static const int maxGrade;
-    static const int minGrade;
+    static const int maxGrade = 1;
+    static const int minGrade = 150;
 
 private:
     class GradeTooHighException : public std::out_of_range {
@@ -30,7 +30,7 @@ private:
         GradeTooLowException(const std::string &msg);
     };
 
-    const std::string _name;  // const?
+    const std::string _name;
     int _grade;
 };
 

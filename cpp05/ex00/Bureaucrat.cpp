@@ -2,9 +2,6 @@
 
 #include <iostream>
 
-const int Bureaucrat::maxGrade = 1;
-const int Bureaucrat::minGrade = 150;
-
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &msg)
     : std::out_of_range(msg) {}
 
