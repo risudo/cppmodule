@@ -1,20 +1,20 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
-# include "Form.hpp"
+#define PRESIDENTIALPARDONFORM_HPP
+#include "Form.hpp"
 
-class PresidentialPardonForm : public Form
-{
+class PresidentialPardonForm : public Form {
 public:
-	PresidentialPardonForm();
-	PresidentialPardonForm(std::string const &target);
-	virtual ~PresidentialPardonForm();
-	PresidentialPardonForm(PresidentialPardonForm const &other);
-	PresidentialPardonForm &operator=(PresidentialPardonForm const &other);
+    PresidentialPardonForm(std::string const &target);
+    virtual ~PresidentialPardonForm();
+    PresidentialPardonForm(PresidentialPardonForm const &other);
 
-	static const int signGrade = 25;
-	static const int execGrade = 5;
+    static const int signGrade = 25;
+    static const int execGrade = 5;
+
 private:
-	void action() const;
+    PresidentialPardonForm &operator=(PresidentialPardonForm const &other);
+    PresidentialPardonForm();
+    void action() const;
 };
 
 #endif
