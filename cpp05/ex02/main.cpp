@@ -1,48 +1,107 @@
 #include <iostream>
+
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-int	main()
-{
-	std::cout <<"----- test1 ShrubberyCreationForm-----" << std::endl;
-	try {
-		ShrubberyCreationForm sformA("sformA");
-		Bureaucrat a("a", 130);
-		a.signForm(sformA);
-		a.executeForm(sformA);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
+#define GREEN "\033[32m"
+#define RESET "\033[0m"
 
-	std::cout <<"\n----- test2 -----" << std::endl;
-	try {
-		ShrubberyCreationForm sformB("a");
-		Bureaucrat b("b", 140);
-		b.signForm(sformB);
-		b.executeForm(sformB);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
+int main() {
+    std::cout << GREEN << "--- ShrubberyCreationForm ---" << std::endl;
+    std::cout << "- cannot sign- " << RESET << std::endl;
+    try {
+        ShrubberyCreationForm sformA("home");
+        Bureaucrat bureaucrat("bureaucrat", 146);
+        std::cout << sformA << std::endl;
+        std::cout << bureaucrat << std::endl;
+        bureaucrat.signForm(sformA);
+        bureaucrat.executeForm(sformA);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
 
-	std::cout <<"\n----- test3 Robotization -----" << std::endl;
-	try {
-		RobotomyRequestForm rformA("rformA");
-		Bureaucrat c("c", 40);
-		c.signForm(rformA);
-		c.executeForm(rformA);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
+    std::cout << GREEN << "- cannot execute -" << RESET << std::endl;
+    try {
+        ShrubberyCreationForm sformB("home");
+        Bureaucrat bureaucrat("bureaucrat", 140);
+        std::cout << sformB << std::endl;
+        std::cout << bureaucrat << std::endl;
+        bureaucrat.signForm(sformB);
+        bureaucrat.executeForm(sformB);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << GREEN << "- can execute -" << RESET << std::endl;
+    try {
+        ShrubberyCreationForm sformB("home");
+        Bureaucrat bureaucrat("bureaucrat", 100);
+        std::cout << sformB << std::endl;
+        std::cout << bureaucrat << std::endl;
+        bureaucrat.signForm(sformB);
+        bureaucrat.executeForm(sformB);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
 
-	std::cout <<"\n----- test3 PresidentialPardonForm -----" << std::endl;
-	try {
-		PresidentialPardonForm pformA("pformA");
-		Bureaucrat d("e", 5);
-		d.signForm(pformA);
-		d.executeForm(pformA);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
+    std::cout << GREEN << "\n--- RobotomyRequestForm ---" << std::endl;
+    std::cout << "- cannot sign -" << RESET << std::endl;
+    try {
+        RobotomyRequestForm rformA("hoge");
+        Bureaucrat bureaucrat("bureaucrat", 80);
+        bureaucrat.signForm(rformA);
+        bureaucrat.executeForm(rformA);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    std::cout << GREEN << "- cannot execute -" << RESET << std::endl;
+    try {
+        RobotomyRequestForm rformA("hoge");
+        Bureaucrat bureaucrat("bureaucrat", 50);
+        bureaucrat.signForm(rformA);
+        bureaucrat.executeForm(rformA);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    std::cout << GREEN << "can execute" << RESET << std::endl;
+    try {
+        RobotomyRequestForm rformA("hoge");
+        Bureaucrat bureaucrat("bureaucrat", 40);
+        bureaucrat.signForm(rformA);
+        bureaucrat.executeForm(rformA);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    std::cout << GREEN << "\n--- PresidentialPardonForm ---" << std::endl;
+    std::cout << "- cannot sign -" << RESET << std::endl;
+    try {
+        PresidentialPardonForm pformA("hoge");
+        Bureaucrat bureaucrat("bureaucrat", 5);
+        bureaucrat.signForm(pformA);
+        bureaucrat.executeForm(pformA);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << GREEN << "- cannot execute -" << RESET << std::endl;
+    try {
+        PresidentialPardonForm pformA("hoge");
+        Bureaucrat bureaucrat("bureaucrat", 6);
+        bureaucrat.signForm(pformA);
+        bureaucrat.executeForm(pformA);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << GREEN << "- can execute -" << RESET << std::endl;
+    try {
+        PresidentialPardonForm pformA("hoge");
+        Bureaucrat bureaucrat("bureaucrat", 5);
+        bureaucrat.signForm(pformA);
+        bureaucrat.executeForm(pformA);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
 }
