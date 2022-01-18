@@ -82,6 +82,7 @@ void Form::execute(Bureaucrat const &executor) const {
 
 std::ostream &operator<<(std::ostream &out, Form &f) {
     out << "<Form name: " << f.getName() << ">"
+        << "\n            target: " << f.getTarget()
         << "\n     grade to sign: " << f.getGradeToSign()
         << "\n  grade to execute: " << f.getGradeToExecute()
         << "\n             sined: ";

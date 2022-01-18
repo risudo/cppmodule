@@ -50,6 +50,8 @@ int main() {
     try {
         RobotomyRequestForm rformA("hoge");
         Bureaucrat bureaucrat("bureaucrat", 80);
+        std::cout << rformA << std::endl;
+        std::cout << bureaucrat << std::endl;
         bureaucrat.signForm(rformA);
         bureaucrat.executeForm(rformA);
     } catch (std::exception &e) {
@@ -60,6 +62,8 @@ int main() {
     try {
         RobotomyRequestForm rformA("hoge");
         Bureaucrat bureaucrat("bureaucrat", 50);
+        std::cout << rformA << std::endl;
+        std::cout << bureaucrat << std::endl;
         bureaucrat.signForm(rformA);
         bureaucrat.executeForm(rformA);
     } catch (std::exception &e) {
@@ -70,6 +74,8 @@ int main() {
     try {
         RobotomyRequestForm rformA("hoge");
         Bureaucrat bureaucrat("bureaucrat", 40);
+        std::cout << rformA << std::endl;
+        std::cout << bureaucrat << std::endl;
         bureaucrat.signForm(rformA);
         bureaucrat.executeForm(rformA);
     } catch (std::exception &e) {
@@ -80,7 +86,9 @@ int main() {
     std::cout << "- cannot sign -" << RESET << std::endl;
     try {
         PresidentialPardonForm pformA("hoge");
-        Bureaucrat bureaucrat("bureaucrat", 5);
+        Bureaucrat bureaucrat("bureaucrat", 26);
+        std::cout << pformA << std::endl;
+        std::cout << bureaucrat << std::endl;
         bureaucrat.signForm(pformA);
         bureaucrat.executeForm(pformA);
     } catch (std::exception &e) {
@@ -90,6 +98,8 @@ int main() {
     try {
         PresidentialPardonForm pformA("hoge");
         Bureaucrat bureaucrat("bureaucrat", 6);
+        std::cout << pformA << std::endl;
+        std::cout << bureaucrat << std::endl;
         bureaucrat.signForm(pformA);
         bureaucrat.executeForm(pformA);
     } catch (std::exception &e) {
@@ -99,6 +109,8 @@ int main() {
     try {
         PresidentialPardonForm pformA("hoge");
         Bureaucrat bureaucrat("bureaucrat", 5);
+        std::cout << pformA << std::endl;
+        std::cout << bureaucrat << std::endl;
         bureaucrat.signForm(pformA);
         bureaucrat.executeForm(pformA);
     } catch (std::exception &e) {
