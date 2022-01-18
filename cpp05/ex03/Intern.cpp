@@ -14,7 +14,7 @@ Intern &Intern::operator=(Intern const &other) {
 
 Form *Intern::makeForm(std::string const &form, std::string const &target) {
     std::string form_list[3] = {"presidential pardon", "robotomy request",
-                               "shrubbery creation"};
+                                "shrubbery creation"};
     Form *(Intern::*f[3])(std::string const &) const = {
         &Intern::getPresidentialPardonForm, &Intern::getRobotomyRequestForm,
         &Intern::getShrubberyCreationForm};

@@ -37,10 +37,11 @@ private:
     public:
         GradeTooLowException(const std::string &msg);
     };
-	
-	class IsNotSigned : public std::runtime_error {
-		public: IsNotSigned();
-	};
+
+    class IsNotSigned : public std::runtime_error {
+    public:
+        IsNotSigned();
+    };
 
     std::string const _name;
     std::string const _target;

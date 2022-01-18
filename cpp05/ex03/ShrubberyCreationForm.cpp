@@ -20,9 +20,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(
 }
 
 void ShrubberyCreationForm::action() const {
-    std::string ofname(getTarget() + "_shrubbery");
-
-    std::ofstream ofs(ofname);
+    std::ofstream ofs(std::string(getTarget() + "_shrubbery"));
     if (ofs.fail()) {
         std::cerr << "error" << std::endl;
         return;
