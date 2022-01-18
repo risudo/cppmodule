@@ -8,7 +8,7 @@ Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &msg)
 Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &msg)
     : std::out_of_range(msg) {}
 
-Bureaucrat::Bureaucrat() : _grade(1) {}
+Bureaucrat::Bureaucrat() : _name("NONAME"), _grade(1) {}
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name) {
     if (grade > minGrade) {

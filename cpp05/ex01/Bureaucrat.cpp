@@ -10,7 +10,7 @@ Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &msg)
 Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &msg)
     : std::out_of_range(msg) {}
 
-Bureaucrat::Bureaucrat() : _grade(1) {}
+Bureaucrat::Bureaucrat() : _name("NONAME"), _grade(1) {}
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name) {
     if (grade > minGrade) {
@@ -53,7 +53,8 @@ void Bureaucrat::downGrade() {
 
 void Bureaucrat::signForm(Form &f) {
     if (f.getIsSigned()) {
-        std::cout << "<" << f.getName() << "> " << "already signed" << std::endl;
+        std::cout << "<" << f.getName() << "> "
+                  << "already signed" << std::endl;
         return;
     }
     try {
