@@ -41,14 +41,14 @@ void Bureaucrat::upGrade() {
     if (_grade == maxGrade) {
         throw GradeTooHighException("<upGrade> Grade too high");
     }
-    _grade++;
+    _grade--;
 }
 
 void Bureaucrat::downGrade() {
     if (_grade == minGrade) {
         throw GradeTooLowException("<downGrade> Grade too low");
     }
-    _grade--;
+    _grade++;
 }
 
 void Bureaucrat::signForm(Form &f) {

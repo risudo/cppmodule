@@ -33,22 +33,22 @@ int main() {
     }
 
     try {
-        std::cout << GREEN << "--- grade 2, upGrade ---" << RESET << std::endl;
-        Bureaucrat d("d", 2);
-        std::cout << d << std::endl;
-        d.upGrade();
-        std::cout << d << std::endl;
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
-
-    try {
         std::cout << GREEN << "--- grade 150, downGrade ---" << RESET
                   << std::endl;
         Bureaucrat e("e", 150);
         std::cout << e << std::endl;
         e.downGrade();
         std::cout << e << std::endl;  // should not output
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    try {
+        std::cout << GREEN << "--- grade 2, upGrade ---" << RESET << std::endl;
+        Bureaucrat d("d", 2);
+        std::cout << d << std::endl;
+        d.upGrade();
+        std::cout << d << std::endl;
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
