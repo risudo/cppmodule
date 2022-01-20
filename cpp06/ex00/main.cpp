@@ -8,7 +8,7 @@ void printConvert(std::string str) {
     Converter conv(str);
 
     if (conv.init() == -1) {
-        std::cout << "char: imposible" << std::endl;
+        std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
         std::cout << "float: impossible" << std::endl;
         std::cout << "double: impossible" << std::endl;
@@ -25,5 +25,3 @@ int main(int argc, char **argv) {
     printConvert(argv[1]);
     return 0;
 }
-
-//TODO: 指数表記めんどい問題

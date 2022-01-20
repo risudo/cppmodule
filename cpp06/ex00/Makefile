@@ -23,4 +23,7 @@ re: fclean all
 sanitize: $(OBJS)
 	$(CXX) $(CXXFLAGS) -fsanitize=address -o $(NAME) $(OBJS)
 
+test:
+	bash ./test.sh | less
+
 .PHONY: all clean fclean re

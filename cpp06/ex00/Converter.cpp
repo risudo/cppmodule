@@ -90,15 +90,16 @@ int Converter::acquireInt() {
 }
 
 int Converter::acquireFloat() {
+    int sign = 0;
     bool dot = false;
-    bool sign = false;
-    for (std::size_t i = 0; i < _str.length() - 1; i++) {
+    if (_special || _str[0] == '+' || _str[0] == '-') {
+        sign = 1;
+    } else if (!std::isdigit(static_cast<int>(_str[0]))) {
+        return -1;
+    }
+    for (std::size_t i = 0 + sign; i < _str.length() - 1; i++) {
         if (_special == true) {
             break;
-        }
-        if (sign == false && (_str[i] == '-' || _str[i] == '+')) {
-            sign = true;
-            continue;
         }
         if (dot == false && _str[i] == '.') {
             dot = true;
@@ -117,15 +118,16 @@ int Converter::acquireFloat() {
 }
 
 int Converter::acquireDouble() {
+    int sign = 0;
     bool dot = false;
-    bool sign = false;
-    for (std::size_t i = 0; i < _str.length() - 1; i++) {
+    if (_special || _str[0] == '+' || _str[0] == '-') {
+        sign = 1;
+    } else if (!std::isdigit(static_cast<int>(_str[0]))) {
+        return -1;
+    }
+    for (std::size_t i = 0 + sign; i < _str.length() - 1; i++) {
         if (_special == true) {
             break;
-        }
-        if (sign == false && (_str[i] == '-' || _str[i] == '+')) {
-            sign = true;
-            continue;
         }
         if (dot == false && _str[i] == '.') {
             dot = true;
@@ -189,7 +191,8 @@ void Converter::intCase(std::string const type[]) {
     } else if (!std::isprint(_i)) {
         std::cout << type[CHAR] << "Non displayable" << std::endl;
     } else {
-        std::cout << type[CHAR] << static_cast<char>(_i) << std::endl;
+        std::cout << type[CHAR] << "'" << static_cast<char>(_i) << "'"
+                  << std::endl;
     }
 
     std::cout << type[INT] << _i << std::endl;
@@ -204,7 +207,8 @@ void Converter::floatCase(std::string const type[]) {
     } else if (!std::isprint(static_cast<int>(_f))) {
         std::cout << type[CHAR] << "Non displayable" << std::endl;
     } else {
-        std::cout << type[CHAR] << static_cast<char>(_f) << std::endl;
+        std::cout << type[CHAR] << "'" << static_cast<char>(_f) << "'"
+                  << std::endl;
     }
 
     if (!isInRange(static_cast<double>(_f), static_cast<double>(INT_MIN),
@@ -225,7 +229,8 @@ void Converter::doubleCase(std::string const type[]) {
     } else if (!std::isprint(static_cast<int>(_d))) {
         std::cout << type[CHAR] << "Non displayable" << std::endl;
     } else {
-        std::cout << type[CHAR] << static_cast<char>(_d) << std::endl;
+        std::cout << type[CHAR] << "'" << static_cast<char>(_d) << "'"
+                  << std::endl;
     }
 
     if (!isInRange(_d, static_cast<double>(INT_MIN),
@@ -235,8 +240,10 @@ void Converter::doubleCase(std::string const type[]) {
         std::cout << type[INT] << static_cast<int>(_d) << std::endl;
     }
 
-    if (!_special && !isInRange(_d, static_cast<double>(FLT_MIN),
-                                static_cast<double>(FLT_MAX))) {
+    if (!_special && (!isInRange(_d, static_cast<double>(FLT_MAX * -1),
+                                 static_cast<double>(FLT_MAX)) ||
+                      _d < static_cast<double>(FLT_MIN) ||
+                      _d > static_cast<double>(FLT_MIN * -1))) {
         std::cout << type[FLOAT] << "impossible" << std::endl;
     } else {
         putFloat(static_cast<float>(_d), type[FLOAT]);
@@ -249,7 +256,7 @@ void Converter::printConverted() {
 
     switch (_type) {
         case CHAR:
-            std::cout << type[CHAR] << _c << std::endl;
+            std::cout << type[CHAR] << "'" << _c << "'" << std::endl;
             std::cout << type[INT] << static_cast<int>(_c) << std::endl;
             putFloat(static_cast<float>(_c), type[FLOAT]);
             putDouble(static_cast<double>(_c), type[DOUBLE]);
