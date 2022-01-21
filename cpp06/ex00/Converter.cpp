@@ -46,17 +46,17 @@ void Converter::detectType() {
         _special = true;
         return;
     }
-    if (_str.length() == 1 && std::isprint(_str[0]) && !std::isdigit(_str[0])) {
+    if (_str.size() == 1 && std::isprint(_str[0]) && !std::isdigit(_str[0])) {
         _type = CHAR;
         return;
     }
-    if (_str[_str.length() - 1] == 'f') {
+    if (_str[_str.size() - 1] == 'f') {
         _type = FLOAT;
         return;
     }
 
     bool dot = false;
-    for (std::size_t i = 0; i < _str.length() - 1; i++) {
+    for (std::size_t i = 0; i < _str.size() - 1; i++) {
         if (_str[i] == '.') {
             dot = true;
             break;
@@ -73,7 +73,7 @@ void Converter::acquireChar() { _c = _str[0]; }
 
 int Converter::acquireInt() {
     bool sign = false;
-    for (std::size_t i = 0; i < _str.length() - 1; i++) {
+    for (std::size_t i = 0; i < _str.size() - 1; i++) {
         if (sign == false && (_str[i] == '-' || _str[i] == '+')) {
             sign = true;
             continue;
@@ -97,7 +97,7 @@ int Converter::acquireFloat() {
     } else if (!std::isdigit(static_cast<int>(_str[0]))) {
         return -1;
     }
-    for (std::size_t i = 0 + sign; i < _str.length() - 1; i++) {
+    for (std::size_t i = 0 + sign; i < _str.size() - 1; i++) {
         if (_special == true) {
             break;
         }
@@ -109,7 +109,7 @@ int Converter::acquireFloat() {
             return -1;
         }
     }
-    _str.erase(_str.length() - 1);
+    _str.erase(_str.size() - 1);
     std::istringstream s(_str);
     if (!(s >> _f)) {
         return -1;
@@ -125,7 +125,7 @@ int Converter::acquireDouble() {
     } else if (!std::isdigit(static_cast<int>(_str[0]))) {
         return -1;
     }
-    for (std::size_t i = 0 + sign; i < _str.length() - 1; i++) {
+    for (std::size_t i = 0 + sign; i < _str.size() - 1; i++) {
         if (_special == true) {
             break;
         }
