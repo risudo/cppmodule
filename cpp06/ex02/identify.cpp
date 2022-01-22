@@ -24,19 +24,22 @@ void identify(Base &p) {
         A &a = dynamic_cast<A &>(p);
         std::cout << "It is A" << std::endl;
         static_cast<void>(a);
+        return;
     } catch (std::bad_cast) {
-        try {
-            B &b = dynamic_cast<B &>(p);
-            std::cout << "It is B" << std::endl;
-            static_cast<void>(b);
-        } catch (std::bad_cast) {
-            try {
-                C &c = dynamic_cast<C &>(p);
-                std::cout << "It is C" << std::endl;
-                static_cast<void>(c);
-            } catch (std::bad_cast) {
-                std::cout << "It is unknown type" << std::endl;
-            }
-        }
     }
+    try {
+        B &b = dynamic_cast<B &>(p);
+        std::cout << "It is B" << std::endl;
+        static_cast<void>(b);
+        return;
+    } catch (std::bad_cast) {
+    }
+    try {
+        C &c = dynamic_cast<C &>(p);
+        std::cout << "It is C" << std::endl;
+        static_cast<void>(c);
+        return;
+    } catch (std::bad_cast) {
+    }
+    std::cout << "It is unknown type" << std::endl;
 }
