@@ -219,7 +219,7 @@ void Converter::floatCase(std::string const type[]) {
     }
 
     putFloat(_f, type[FLOAT]);
-    putDouble(static_cast<double>(_f), type[FLOAT]);
+    putDouble(static_cast<double>(_f), type[DOUBLE]);
 }
 
 void Converter::doubleCase(std::string const type[]) {
