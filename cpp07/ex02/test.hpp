@@ -28,16 +28,19 @@ void test(Array<T> array, T contents[]) {
             array[i] = contents[i];
         }
         printArray(array, "array");
+
         std::cout << CIAN << "\n-- copy test --" << RESET << std::endl;
         std::cout << "- copy constructor call -" << std::endl;
         Array<T> copy(array);
         std::cout << "copy size: " << copy.size() << std::endl;
         printArray(copy, "copy");
+
         std::cout << "- assignment operator call -" << std::endl;
         Array<T> copy2(100);
         copy2 = copy;
         std::cout << "copy size: " << copy2.size() << std::endl;
         printArray(copy2, "copy");
+
         std::cout << CIAN << "\n-- exeption test --" << RESET << std::endl;
         std::cout << "array[" << array.size() << "]" << std::endl;
         std::cout << array[array.size()] << std::endl;  // should not output
