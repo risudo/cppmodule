@@ -19,6 +19,15 @@ void printArray(Array<T> array, std::string name) {
 }
 
 template <typename T>
+void printArrayAndCopy(Array<T> array, Array<T> copy) {
+    for (unsigned int i = 0; i < array.size(); i++) {
+        std::cout << "array"
+                  << "[" << i << "]: " << array[i] << ", copy[" << i
+                  << "]: " << copy[i] << std::endl;
+    }
+}
+
+template <typename T>
 void test(Array<T> array, T contents[]) {
     try {
         std::cout << CIAN << "-- subscript operator test --" << RESET
@@ -32,19 +41,19 @@ void test(Array<T> array, T contents[]) {
         std::cout << CIAN << "\n-- copy test --" << RESET << std::endl;
         std::cout << "- copy constructor call -" << std::endl;
         Array<T> copy(array);
-        std::cout << "copy size: " << copy.size() << std::endl;
-        printArray(copy, "copy");
+        copy[0] += 1;
+        printArrayAndCopy(array, copy);
 
         std::cout << "- assignment operator call -" << std::endl;
         Array<T> copy2(100);
-        copy2 = copy;
-        std::cout << "copy size: " << copy2.size() << std::endl;
-        printArray(copy2, "copy");
+        copy2 = array;
+        copy2[1] += 1;
+        printArrayAndCopy(array, copy2);
 
         std::cout << CIAN << "\n-- exeption test --" << RESET << std::endl;
         std::cout << "array[" << array.size() << "]" << std::endl;
         std::cout << array[array.size()] << std::endl;  // should not output
-        std::cout << RED << "TEST NG" << RESET << std::endl;
+        std::cout << RED << "exeption test NG" << RESET << std::endl;
     } catch (std::exception &e) {
         std::cout << "catch " << e.what() << std::endl;
     }
