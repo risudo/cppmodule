@@ -5,20 +5,16 @@
 
 int main() {
     {
-        std::cout << "--- char ---" << std::endl;
-        char arr[] = {'a', 'b', 'c', 'd'};
-        iter(arr, 3, &write);
-    }
-
-    {
         std::cout << "\n--- int ---" << std::endl;
-        int arr[] = {1, 2, 3, 4, 5, 6};
-        iter(arr, 6, &write);
+        int arr[] = {1, 2, 3, 4};
+        std::size_t size = 4;
+        iter(arr, size, &putElement);
+        iter(arr, size, &incrementAndPut);
     }
-
     {
         std::cout << "\n--- string ---" << std::endl;
-        std::string arr[] = {"hgoe", "hogeee"};
-        iter(arr, 2, &write);
+        const std::string arr[] = {"hoge", "hogeee"};
+        const std::size_t size = 2;
+        iter(arr, size, &putElement);
     }
 }
