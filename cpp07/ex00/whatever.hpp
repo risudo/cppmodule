@@ -3,10 +3,10 @@
 
 template <typename T>
 const T& max(const T& a, const T& b) {
-    if (a < b) {
-        return b;
+    if (a > b) {
+        return a;
     }
-    return a;
+    return b;
 }
 
 template <typename T>
