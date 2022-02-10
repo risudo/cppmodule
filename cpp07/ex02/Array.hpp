@@ -13,6 +13,7 @@ public:
     Array &operator=(Array const &other);
     unsigned int size() const;
     T &operator[](unsigned int n);
+    const T &operator[](unsigned int n) const;
 
 private:
     T *arr_;
@@ -56,6 +57,14 @@ unsigned int Array<T>::size() const {
 
 template <typename T>
 T &Array<T>::operator[](unsigned int n) {
+    if (n >= size_) {
+        throw std::exception();
+    }
+    return (arr_[n]);
+}
+
+template <typename T>
+const T &Array<T>::operator[](unsigned int n) const {
     if (n >= size_) {
         throw std::exception();
     }
