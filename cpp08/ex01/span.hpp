@@ -1,6 +1,7 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
+#include <iostream>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -12,15 +13,17 @@ public:
     span(span const &other);
     span &operator=(span const &other);
     void addNumber(int n);
-	template<class Iterater>
-	void addNumber(Iterater begin, Iterater end);//
-    int shotestSpan() const;
-    int longestSpan() const;
-	void printValue() const;
+    void addNumber(std::vector<int>::iterator begin,
+                   std::vector<int>::iterator last);
+    unsigned int shortestSpan() const;
+    unsigned int longestSpan() const;
+    void printStrageValues() const;
+    unsigned int getMaxStrageSize() const;
+    unsigned int getStrageSize() const;
 
 private:
-    unsigned int size_;
-    std::vector<int> values_;
+    unsigned int maxStrageSize_;
+    std::vector<int> strage_;
 
     class CannotAdd : public std::runtime_error {
     public:
