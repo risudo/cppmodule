@@ -11,7 +11,8 @@ span::span(span const &other) { *this = other; }
 
 span &span::operator=(span const &other) {
     if (this != &other) {
-        // TODO
+        maxStrageSize_ = other.maxStrageSize_;
+        strage_ = other.strage_;
     }
     return *this;
 }
@@ -27,7 +28,7 @@ void span::addNumber(int n) {
 void span::addNumber(std::vector<int>::iterator first,
                      std::vector<int>::iterator last) {
     std::copy(first, last, std::back_inserter(strage_));
-	std::sort(strage_.begin(), strage_.end());
+    std::sort(strage_.begin(), strage_.end());
 }
 
 unsigned int span::shortestSpan() const {
@@ -57,9 +58,6 @@ void span::printStrageValues() const {
         std::cout << strage_[i];
         if (i != strage_.size() - 1) {
             std::cout << ", ";
-        }
-        if ((i + 1) % 10 == 0) {
-            std::cout << "\n";
         }
     }
     std::cout << " }" << std::endl;

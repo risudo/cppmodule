@@ -70,19 +70,29 @@ void printSpanInfo(span &span) {
     std::cout << "shortestSpan   : " << span.shortestSpan() << std::endl;
 }
 
-void simpleSpanTest() {
-    std::cout << GREEN << "--- simpleTest  ---" << RESET << std::endl;
+void simpleTest(unsigned int size, int start) {
     try {
-        span span(5);
-        span.addNumber(1);
-        span.addNumber(3);
-        span.addNumber(-10);
-        span.addNumber(100);
+        span span(size);
+        for (unsigned int i = 0; i < size; i++) {
+            span.addNumber(start);
+            ++start;
+        }
         span.printStrageValues();
         printSpanInfo(span);
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
+}
+
+void simpleTests() {
+    std::cout << GREEN << "--- simpleTest  ---" << RESET << std::endl;
+    std::cout << CIAN << "- positive values -" << RESET << std::endl;
+    simpleTest(5, 0);
+    std::cout << CIAN << "- negatgive values -" << RESET << std::endl;
+    simpleTest(5, -10);
+    std::cout << CIAN << "- positive and negatgive values -" << RESET
+              << std::endl;
+    simpleTest(10, -5);
 }
 
 void largeSizeTest() {
@@ -91,6 +101,7 @@ void largeSizeTest() {
         unsigned int size = 10000;
         std::vector<int> intVec(size);
         intVec[10] = -100;
+        intVec[1000] = 500;
         span span(size);
         span.addNumber(intVec.begin(), intVec.end());
         printSpanInfo(span);
@@ -115,12 +126,8 @@ void maxRangeTest() {
 
 int main() {
     exeptionTest();
-    simpleSpanTest();
+    simpleTests();
     maxRangeTest();
-    /* std::cout << static_cast<long>(INT_MAX) + static_cast<long>(INT_MAX) + 1
-     */
-    /*           << std::endl; */
-    /* std::cout << LONG_MAX << std::endl; */
 }
 
 // 例外テスト
