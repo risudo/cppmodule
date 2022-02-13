@@ -4,6 +4,7 @@
 
 #define YELLO "\033[33m"
 #define RESET "\033[39m"
+#define CIAN "\033[36m"
 
 template <typename T>
 void printMutantStack(MutantStack<T> &mstack) {
@@ -41,7 +42,7 @@ void printEmpty(T &stack) {
     std::cout << "empty: " << stack.empty() << std::endl;
 }
 
-template <typename T>
+template <class T>
 void printPop(T &stack) {
     std::cout << "pop" << std::endl;
     stack.pop();
@@ -65,5 +66,22 @@ void testIntStack(T &stack) {
         std::cout << "copy == stack" << std::endl;
     } else {
         std::cout << "copy != stack" << std::endl;
+    }
+}
+
+template<typename T>
+void testMoveIterater(T it, T ite) {
+    std::cout << CIAN << "-- increment iterator --" << RESET << std::endl;
+    std::size_t i = 0;
+    for (; it != ite; i++) {
+        std::cout << i << ": " << *it << std::endl;
+        it++;
+    }
+
+    std::cout << CIAN << "-- decrement iterator --" << RESET << std::endl;
+    it--;
+    for (; i > 0; i--) {
+        std::cout << i - 1 << ": " << *it << std::endl;
+        it--;
     }
 }

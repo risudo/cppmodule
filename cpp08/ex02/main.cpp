@@ -39,29 +39,14 @@ void testStack() {
 void testIterator() {
     std::cout << GREEN << "\n--- testIterator ---" << RESET << std::endl;
     MutantStack<std::string> mstack;
-
     mstack.push("hoge");
     mstack.push("aaaa");
     mstack.push("bb");
-
     printMutantStack(mstack);
+
     MutantStack<std::string>::iterator it = mstack.begin();
     MutantStack<std::string>::iterator ite = mstack.end();
-
-    std::cout << CIAN << "-- increment iterator --" << RESET << std::endl;
-    std::size_t i = 0;
-    for (; it != ite; i++) {
-        std::cout << i << ": " << *it << std::endl;
-        it++;
-    }
-
-    std::cout << CIAN << "-- decrement iterator --" << RESET << std::endl;
-    it--;
-    for (; i > 0; i--) {
-        std::cout << i - 1 << ": " << *it << std::endl;
-        it--;
-    }
-    it++;
+    testMoveIterater(it, ite);
 
     std::cout << CIAN << "-- asignation test --" << RESET << std::endl;
     std::cout << "*it : " << *it << std::endl;
@@ -72,28 +57,37 @@ void testIterator() {
 void testReverseIterator() {
     std::cout << GREEN << "---  testReverseIterator ---" << RESET << std::endl;
     MutantStack<int> mstack;
-
     mstack.push(3);
     mstack.push(-100);
     mstack.push(20);
-
     printMutantStack(mstack);
+
     MutantStack<int>::reverse_iterator rit = mstack.rbegin();
     MutantStack<int>::reverse_iterator rite = mstack.rend();
-    std::cout << CIAN << "-- increment iterator --" << RESET << std::endl;
-    std::size_t i = 0;
-    for (; rit != rite; i++) {
-        std::cout << i << ": " << *rit << std::endl;
-        rit++;
-    }
+    testMoveIterater(rit, rite);
 
-    std::cout << CIAN << "-- decrement iterator --" << RESET << std::endl;
-    rit--;
-    for (; i > 0; i--) {
-        std::cout << i - 1 << ": " << *rit << std::endl;
-        rit--;
-    }
-    rit++;
+    std::cout << CIAN << "-- asignation test --" << RESET << std::endl;
+    std::cout << "*rit : " << *rit << std::endl;
+    *rit = 9999;
+    std::cout << "*rit : " << *rit << std::endl;
+}
+
+void testConstIterator() {
+    std::cout << GREEN << "---  testConstIterator ---" << RESET << std::endl;
+    MutantStack<double> mstack;
+    mstack.push(1.2);
+    mstack.push(0.1);
+    mstack.push(-0.5);
+    printMutantStack(mstack);
+
+    MutantStack<double>::const_iterator cit = mstack.begin();
+    MutantStack<double>::const_iterator cite = mstack.end();
+    testMoveIterater(cit, cite);
+    // *cit = 0.33; //cannot asign
+}
+
+void testConstReverseIterator() {
+
 }
 
 int main() {
@@ -101,5 +95,6 @@ int main() {
     testStack();
     testIterator();
     testReverseIterator();
+    testConstIterator();
     return 0;
 }
