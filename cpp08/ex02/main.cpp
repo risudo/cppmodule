@@ -73,7 +73,7 @@ void testReverseIterator() {
 }
 
 void testConstIterator() {
-    std::cout << GREEN << "---  testConstIterator ---" << RESET << std::endl;
+    std::cout << GREEN << "\n---  testConstIterator ---" << RESET << std::endl;
     MutantStack<double> mstack;
     mstack.push(1.2);
     mstack.push(0.1);
@@ -87,7 +87,18 @@ void testConstIterator() {
 }
 
 void testConstReverseIterator() {
+    std::cout << GREEN << "\n--- testConstReverseIterator ---" << RESET
+              << std::endl;
+    MutantStack<int> mstack;
+    mstack.push(10);
+    mstack.push(100);
+    mstack.push(1000);
+    printMutantStack(mstack);
 
+    MutantStack<int>::const_reverse_iterator crit = mstack.rbegin();
+    MutantStack<int>::const_reverse_iterator crite = mstack.rend();
+    testMoveIterater(crit, crite);
+    // *crit = 0.33; //cannot asign
 }
 
 int main() {

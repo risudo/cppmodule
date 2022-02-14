@@ -67,9 +67,17 @@ void testIntStack(T &stack) {
     } else {
         std::cout << "copy != stack" << std::endl;
     }
+    std::cout << YELLO << "- copy constructor test -" << RESET << std::endl;
+    T copy2(stack);
+    printTop(copy);
+    if (copy == stack) {
+        std::cout << "copy == stack" << std::endl;
+    } else {
+        std::cout << "copy != stack" << std::endl;
+    }
 }
 
-template<typename T>
+template <typename T>
 void testMoveIterater(T it, T ite) {
     std::cout << CIAN << "-- increment iterator --" << RESET << std::endl;
     std::size_t i = 0;
