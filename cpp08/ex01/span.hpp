@@ -6,12 +6,12 @@
 #include <string>
 #include <vector>
 
-class span {
+class Span {
 public:
-    span(unsigned int N = 0);
-    ~span();
-    span(span const &other);
-    span &operator=(span const &other);
+    Span(unsigned int N = 0);
+    ~Span();
+    Span(Span const &other);
+    Span &operator=(Span const &other);
     void addNumber(int n);
     void addNumber(std::vector<int>::iterator begin,
                    std::vector<int>::iterator last);

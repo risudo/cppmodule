@@ -3,13 +3,13 @@
 #include <algorithm>
 #include <iostream>
 
-span::span(unsigned int N) : maxStrageSize_(N) {}
+Span::Span(unsigned int N) : maxStrageSize_(N) {}
 
-span::~span() {}
+Span::~Span() {}
 
-span::span(span const &other) { *this = other; }
+Span::Span(Span const &other) { *this = other; }
 
-span &span::operator=(span const &other) {
+Span &Span::operator=(Span const &other) {
     if (this != &other) {
         maxStrageSize_ = other.maxStrageSize_;
         strage_ = other.strage_;
@@ -17,7 +17,7 @@ span &span::operator=(span const &other) {
     return *this;
 }
 
-void span::addNumber(int n) {
+void Span::addNumber(int n) {
     if (strage_.size() == maxStrageSize_) {
         throw CannotAdd();
     }
@@ -25,13 +25,13 @@ void span::addNumber(int n) {
     std::sort(strage_.begin(), strage_.end());
 }
 
-void span::addNumber(std::vector<int>::iterator first,
+void Span::addNumber(std::vector<int>::iterator first,
                      std::vector<int>::iterator last) {
     std::copy(first, last, std::back_inserter(strage_));
     std::sort(strage_.begin(), strage_.end());
 }
 
-unsigned int span::shortestSpan() const {
+unsigned int Span::shortestSpan() const {
     if (strage_.size() <= 1) {
         throw CannotSpan();
     }
@@ -44,7 +44,7 @@ unsigned int span::shortestSpan() const {
     return span;
 }
 
-unsigned int span::longestSpan() const {
+unsigned int Span::longestSpan() const {
     if (strage_.size() <= 1) {
         throw CannotSpan();
     }
@@ -52,7 +52,7 @@ unsigned int span::longestSpan() const {
     return span;
 }
 
-void span::printStrageValues() const {
+void Span::printStrageValues() const {
     std::cout << "{ ";
     for (unsigned int i = 0; i < strage_.size(); i++) {
         std::cout << strage_[i];
@@ -63,12 +63,12 @@ void span::printStrageValues() const {
     std::cout << " }" << std::endl;
 }
 
-unsigned int span::getMaxStrageSize() const { return maxStrageSize_; }
+unsigned int Span::getMaxStrageSize() const { return maxStrageSize_; }
 
-unsigned int span::getStrageSize() const { return strage_.size(); }
+unsigned int Span::getStrageSize() const { return strage_.size(); }
 
 // exeption class
-span::CannotAdd::CannotAdd(std::string const &msg) : std::runtime_error(msg) {}
+Span::CannotAdd::CannotAdd(std::string const &msg) : std::runtime_error(msg) {}
 
-span::CannotSpan::CannotSpan(std::string const &msg)
+Span::CannotSpan::CannotSpan(std::string const &msg)
     : std::runtime_error(msg) {}
