@@ -7,14 +7,14 @@
 #define RED "\033[31m"
 #define RESET "\033[39m"
 
-void exeptionTest() {
-    std::cout << GREEN << "--- exeptionTest ---" << RESET << std::endl;
+void exceptionTest() {
+    std::cout << GREEN << "--- exceptionTest ---" << RESET << std::endl;
     try {
         std::cout << CIAN << "- trying addNumber 2 times size 1 --" << RESET
                   << std::endl;
         Span span(1);
         span.addNumber(1);
-        span.addNumber(3);
+        span.addNumber(3);  // cannot add
         std::cout << RED << "test NG" << RESET << std::endl;
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
@@ -24,7 +24,7 @@ void exeptionTest() {
         std::cout << CIAN << "- trying longestSpan before addNumber -" << RESET
                   << std::endl;
         Span span(5);
-        span.longestSpan();
+        span.longestSpan();  // cannot span
         std::cout << RED << "test NG" << RESET << std::endl;
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
@@ -35,7 +35,7 @@ void exeptionTest() {
                   << RESET << std::endl;
         Span span(5);
         span.addNumber(3);
-        span.longestSpan();
+        span.longestSpan();  // cannot span
         std::cout << RED << "test NG" << RESET << std::endl;
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
@@ -45,7 +45,7 @@ void exeptionTest() {
         std::cout << CIAN << "- trying shortestSpan before addNumber -" << RESET
                   << std::endl;
         Span span(5);
-        span.shortestSpan();
+        span.shortestSpan();  // cannot span
         std::cout << RED << "test NG" << RESET << std::endl;
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
@@ -56,7 +56,7 @@ void exeptionTest() {
                   << RESET << std::endl;
         Span span(5);
         span.addNumber(3);
-        span.shortestSpan();
+        span.shortestSpan();  // cannot span
         std::cout << RED << "test NG" << RESET << std::endl;
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
@@ -64,8 +64,8 @@ void exeptionTest() {
 }
 
 void printSpanInfo(Span &span) {
-    std::cout << "max strage size: " << span.getMaxStrageSize() << std::endl;
-    std::cout << "strage size    : " << span.getStrageSize() << std::endl;
+    std::cout << "max strage size: " << span.getMaxStorageSize() << std::endl;
+    std::cout << "strage size    : " << span.getStorageSize() << std::endl;
     std::cout << "longestSpan    : " << span.longestSpan() << std::endl;
     std::cout << "shortestSpan   : " << span.shortestSpan() << std::endl;
 }
@@ -77,7 +77,7 @@ void simpleTest(unsigned int size, int start) {
             span.addNumber(start);
             ++start;
         }
-        span.printStrageValues();
+        span.printStorageValues();
         printSpanInfo(span);
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
@@ -117,7 +117,7 @@ void maxRangeTest() {
         Span span(2);
         span.addNumber(INT_MIN);
         span.addNumber(INT_MAX);
-        span.printStrageValues();
+        span.printStorageValues();
         printSpanInfo(span);
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
@@ -125,7 +125,7 @@ void maxRangeTest() {
 }
 
 int main() {
-    exeptionTest();
+    exceptionTest();
     simpleTests();
     maxRangeTest();
 }

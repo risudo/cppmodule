@@ -17,13 +17,13 @@ public:
                    std::vector<int>::iterator last);
     unsigned int shortestSpan() const;
     unsigned int longestSpan() const;
-    void printStrageValues() const;
-    unsigned int getMaxStrageSize() const;
-    unsigned int getStrageSize() const;
+    void printStorageValues() const;
+    unsigned int getMaxStorageSize() const;
+    unsigned int getStorageSize() const;
 
 private:
-    unsigned int maxStrageSize_;
-    std::vector<int> strage_;
+    unsigned int maxStorageSize_;
+    std::vector<int> storage_;
 
     class CannotAdd : public std::runtime_error {
     public:
