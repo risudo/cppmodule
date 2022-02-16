@@ -55,7 +55,7 @@ void testIterator() {
 }
 
 void testReverseIterator() {
-    std::cout << GREEN << "---  testReverseIterator ---" << RESET << std::endl;
+    std::cout << GREEN << "\n---  testReverseIterator ---" << RESET << std::endl;
     MutantStack<int> mstack;
     mstack.push(3);
     mstack.push(-100);

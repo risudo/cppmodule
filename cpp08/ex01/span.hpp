@@ -12,11 +12,13 @@ public:
     ~Span();
     Span(Span const &other);
     Span &operator=(Span const &other);
+
     void addNumber(int n);
     void addNumber(std::vector<int>::iterator begin,
                    std::vector<int>::iterator last);
     unsigned int shortestSpan() const;
     unsigned int longestSpan() const;
+
     void printStorageValues() const;
     unsigned int getMaxStorageSize() const;
     unsigned int getStorageSize() const;
