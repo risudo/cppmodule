@@ -27,6 +27,9 @@ void Span::addNumber(int n) {
 
 void Span::addNumber(std::vector<int>::iterator first,
                      std::vector<int>::iterator last) {
+    if (std::distance(first, last) + storage_.size() > maxStorageSize_) {
+        throw CannotAdd();
+    }
     std::copy(first, last, std::back_inserter(storage_));
     std::sort(storage_.begin(), storage_.end());
 }

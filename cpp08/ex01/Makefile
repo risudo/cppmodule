@@ -22,6 +22,9 @@ fclean: clean
 
 re: fclean all
 
+g: CXXFLAGS += -g
+g: re
+
 -include $(DEPS)
 
 .PHONY: all clean fclean re

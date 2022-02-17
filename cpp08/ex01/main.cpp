@@ -102,7 +102,9 @@ void largeSizeTest() {
         std::vector<int> intVec(size);
         intVec[10] = -100;
         intVec[1000] = 500;
-        Span span(size);
+        Span span(1000000);
+        std::cout << "large size: "
+                  << std::distance(intVec.begin(), intVec.end()) << std::endl;
         span.addNumber(intVec.begin(), intVec.end());
         printSpanInfo(span);
     } catch (std::exception &e) {
