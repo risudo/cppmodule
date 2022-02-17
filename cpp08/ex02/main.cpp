@@ -46,16 +46,17 @@ void testIterator() {
 
     MutantStack<std::string>::iterator it = mstack.begin();
     MutantStack<std::string>::iterator ite = mstack.end();
-    testMoveIterater(it, ite);
+    testMoveIterator(it, ite);
 
-    std::cout << CIAN << "-- asignation test --" << RESET << std::endl;
+    std::cout << CIAN << "-- assignation test --" << RESET << std::endl;
     std::cout << "*it : " << *it << std::endl;
     *it = "after asigning";
     std::cout << "*it : " << *it << std::endl;
 }
 
 void testReverseIterator() {
-    std::cout << GREEN << "\n---  testReverseIterator ---" << RESET << std::endl;
+    std::cout << GREEN << "\n---  testReverseIterator ---" << RESET
+              << std::endl;
     MutantStack<int> mstack;
     mstack.push(3);
     mstack.push(-100);
@@ -64,9 +65,9 @@ void testReverseIterator() {
 
     MutantStack<int>::reverse_iterator rit = mstack.rbegin();
     MutantStack<int>::reverse_iterator rite = mstack.rend();
-    testMoveIterater(rit, rite);
+    testMoveIterator(rit, rite);
 
-    std::cout << CIAN << "-- asignation test --" << RESET << std::endl;
+    std::cout << CIAN << "-- assignation test --" << RESET << std::endl;
     std::cout << "*rit : " << *rit << std::endl;
     *rit = 9999;
     std::cout << "*rit : " << *rit << std::endl;
@@ -82,7 +83,7 @@ void testConstIterator() {
 
     MutantStack<double>::const_iterator cit = mstack.begin();
     MutantStack<double>::const_iterator cite = mstack.end();
-    testMoveIterater(cit, cite);
+    testMoveIterator(cit, cite);
     // *cit = 0.33; //cannot asign
 }
 
@@ -97,7 +98,7 @@ void testConstReverseIterator() {
 
     MutantStack<int>::const_reverse_iterator crit = mstack.rbegin();
     MutantStack<int>::const_reverse_iterator crite = mstack.rend();
-    testMoveIterater(crit, crite);
+    testMoveIterator(crit, crite);
     // *crit = 0.33; //cannot asign
 }
 

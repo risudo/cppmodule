@@ -58,7 +58,7 @@ void testIntStack(T &stack) {
     printTop(stack);
     printPop(stack);
     printTop(stack);
-    std::cout << YELLO << "- asignation operator test -" << RESET << std::endl;
+    std::cout << YELLO << "- assignation operator test -" << RESET << std::endl;
     T copy;
     copy = stack;
     printTop(copy);
@@ -78,7 +78,7 @@ void testIntStack(T &stack) {
 }
 
 template <typename T>
-void testMoveIterater(T it, T ite) {
+void testMoveIterator(T it, T ite) {
     std::cout << CIAN << "-- increment iterator --" << RESET << std::endl;
     std::size_t i = 0;
     for (; it != ite; i++) {
