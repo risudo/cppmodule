@@ -57,6 +57,7 @@ void dequeTest() {
     intDeque.push_back(200);
     intDeque.push_back(1000);
     intDeque.push_back(10000);
+
     for (std::deque<int>::iterator it = intDeque.begin(); it != intDeque.end();
          it++) {
         std::size_t i = 0;
