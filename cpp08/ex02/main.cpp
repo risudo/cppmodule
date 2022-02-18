@@ -50,7 +50,8 @@ void testIterator() {
 
     std::cout << CIAN << "-- assignation test --" << RESET << std::endl;
     std::cout << "*it : " << *it << std::endl;
-    *it = "after asigning";
+    *it = "after assigning";
+    std::cout << "assign \"after assigning\" to *it" << std::endl;
     std::cout << "*it : " << *it << std::endl;
 }
 
@@ -70,6 +71,7 @@ void testReverseIterator() {
     std::cout << CIAN << "-- assignation test --" << RESET << std::endl;
     std::cout << "*rit : " << *rit << std::endl;
     *rit = 9999;
+    std::cout << "assign 9999 to *rit" << std::endl;
     std::cout << "*rit : " << *rit << std::endl;
 }
 
