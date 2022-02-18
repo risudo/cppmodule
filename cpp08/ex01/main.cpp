@@ -21,6 +21,19 @@ void exceptionTest() {
     }
 
     try {
+        std::cout << CIAN << "- iteretor cannot add -" << RESET << std::endl;
+        unsigned int size = 1000000;
+        std::vector<int> intVec(size);
+        std::vector<int>::iterator it = intVec.begin();
+        std::vector<int>::iterator ite = intVec.end();
+
+        Span span(size - 1);
+        span.addNumber(it, ite);  // cannot add
+        std::cout << RED << "test NG" << RESET << std::endl;
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    try {
         std::cout << CIAN << "- trying longestSpan before addNumber -" << RESET
                   << std::endl;
         Span span(5);
