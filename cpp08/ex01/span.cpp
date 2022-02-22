@@ -38,13 +38,17 @@ unsigned int Span::shortestSpan() const {
     if (storage_.size() <= 1) {
         throw CannotSpan();
     }
-    unsigned int span = storage_[1] - storage_[0];
-    for (unsigned int i = 1; i < storage_.size(); i++) {
-        if (static_cast<unsigned int>(storage_[i] - storage_[i - 1]) < span) {
-            span = storage_[i] - storage_[i - 1];
+	const std::vector<int> &sorted = storage_;
+    unsigned int shortest_span = UINT_MAX;
+    for (unsigned int i = 0; i + 1 < sorted.size(); i++) {
+        int now = sorted[i];
+        int next = sorted[i + 1];
+        unsigned int latest_span = static_cast<unsigned int>(next - now);
+        if (latest_span < shortest_span) {
+            shortest_span = latest_span;
         }
     }
-    return span;
+    return shortest_span;
 }
 
 unsigned int Span::longestSpan() const {
